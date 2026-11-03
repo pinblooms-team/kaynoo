@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		 <csp>
+            <mode>
+                <storefront>
+                    <report_uri>http://csp-reporting-service.com/my-project/endpoint</report_uri>
+                </storefront>
+                <admin>
+                    <report_uri>http://csp-reporting-service.com/my-project/endpoint</report_uri>
+                </admin>
+            </mode>
+        </csp>
+		<destino>
+			<general>
+				<theme_color></theme_color>
+				<layout_style></layout_style>
+				<max_width></max_width>
+				<boxed_background_color></boxed_background_color>
+				<boxed_background_image></boxed_background_image>
+				<device_responsive></device_responsive>
+				<direction_rtl></direction_rtl>
+				<show_border_radius></show_border_radius>
+				<home_style></home_style>
+			</general>
+			
+			<font>
+				<body_font></body_font>
+				<body_google_font></body_google_font>
+				<font_size></font_size>
+				<element_google_font></element_google_font>
+				<google_font_targets></google_font_targets>
+			</font>
+			
+			<color>
+				<body_link_color></body_link_color>
+				<body_link_hover_color></body_link_hover_color>
+				<body_text_color></body_text_color>
+			</color>
+			
+			<page_wrapper>
+				<body_background_color></body_background_color>
+				<body_background_image></body_background_image>
+			</page_wrapper>
+			
+			<header>
+				<header_style></header_style>
+				<show_header_notice></show_header_notice>
+				<header_background_color></header_background_color>
+				<header_background_image></header_background_image>
+				<headertop_background_color></headertop_background_color>
+				<headertop_link_color></headertop_link_color>
+				<headertop_link_hover_color></headertop_link_hover_color>
+				<headertop_text_color></headertop_text_color>
+				<headermiddle_background_color></headermiddle_background_color>
+				<headermiddle_link_color></headermiddle_link_color>
+				<headermiddle_link_hover_color></headermiddle_link_hover_color>
+				<headermiddle_text_color></headermiddle_text_color>
+				<headermenu_background_color></headermenu_background_color>
+				<headermenu_link_color></headermenu_link_color>
+				<headermenu_link_hover_color></headermenu_link_hover_color>
+				<headermenu_text_color></headermenu_text_color>
+				<menu_ontop></menu_ontop>
+				<responsive_menu></responsive_menu>
+			</header>
+			
+			<main_content>
+				<main_background_color></main_background_color>
+				<main_background_image></main_background_image>
+			</main_content>
+			
+			<footer>
+				<footer_style></footer_style>
+				<footer_background_color></footer_background_color>
+				<footer_background_image></footer_background_image>
+				<show_footertop></show_footertop>
+				<footertop_background_color></footertop_background_color>
+				<footertop_link_color></footertop_link_color>
+				<footertop_link_hover_color></footertop_link_hover_color>
+				<footertop_text_color></footertop_text_color>
+				<show_footermiddle></show_footermiddle>
+				<footermiddle_background_color></footermiddle_background_color>
+				<footermiddle_link_color></footermiddle_link_color>
+				<footermiddle_link_hover_color></footermiddle_link_hover_color>
+				<footermiddle_text_color></footermiddle_text_color>
+				<show_footerbottom></show_footerbottom>
+				<footerbottom_background_color></footerbottom_background_color>
+				<footerbottom_link_color></footerbottom_link_color>
+				<footerbottom_link_hover_color></footerbottom_link_hover_color>
+				<footerbottom_text_color></footerbottom_text_color>				
+			</footer>
+			
+			<category_view>
+				<keep_image></keep_image>
+				<image_width></image_width>
+				<image_height></image_height>
+				<move_action></move_action>
+				<column_device_1200></column_device_1200>
+				<column_device_992></column_device_992>
+				<column_device_768></column_device_768>
+				<column_device_481></column_device_481>
+				<column_device_less_481></column_device_less_481>
+			</category_view>
+			
+			<product_detail>
+				<detail_style></detail_style>
+				<image_box></image_box>
+				<thumbs_style></thumbs_style>
+				<image_loop></image_loop>
+				<image_keyboard></image_keyboard>
+				<image_navigation></image_navigation>
+				<image_fullscreen></image_fullscreen>
+				<thumbs_width></thumbs_width>
+				<thumbs_height></thumbs_height>
+				<thumbs_navigation></thumbs_navigation>
+				<thumbs_margin></thumbs_margin>
+				<thumbs_borderwidth></thumbs_borderwidth>
+				<breakpoints_width></breakpoints_width>
+				<use_zoom_image></use_zoom_image>
+				<zoom_width></zoom_width>
+				<show_related></show_related>
+				<related_limit></related_limit>
+				<show_upsell></show_upsell>
+				<upsell_limit></upsell_limit>
+				<tab_style></tab_style>
+				<show_custom_tab></show_custom_tab>
+				<custom_tab_name></custom_tab_name>
+				<customtab_content></customtab_content>
+			</product_detail>		
+			
+			<advanced>
+				<show_gototop></show_gototop>
+				<show_addtocart_button></show_addtocart_button>
+				<show_wishlist_button></show_wishlist_button>
+				<show_compare_button></show_compare_button>
+				<show_newsletter_popup></show_newsletter_popup>
+				<custom_copyright></custom_copyright>
+				<copyright_content></copyright_content>
+				<show_newlabel></show_newlabel>
+				<new_label_text></new_label_text>
+				<show_salelabel></show_salelabel>
+				<show_salediscount></show_salediscount>
+				<sale_label_text></sale_label_text>
+				<custom_css></custom_css>
+				<custom_js></custom_js>
+			</advanced>
+			
+			<theme_install>
+				<overwrite_blocks>0</overwrite_blocks>
+				<overwrite_pages>0</overwrite_pages>
+			</theme_install>
+			
+		</destino>
+	</default>
+</config>

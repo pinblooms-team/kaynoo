@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+		<attribute name="class" value="mobile-style"/>
+		<referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">104</argument>
+                <argument name="logo_img_height" xsi:type="number">20</argument>
+            </arguments>
+        </referenceBlock>	
+		
+        <referenceContainer name="head.additional">
+            <block class="Magento\Framework\View\Element\Template" name="config.theme.setting" template="Magento_Theme::html/head.phtml" />
+        </referenceContainer>
+		
+		<referenceContainer name="after.body.start">
+            <block class="Magento\Newsletter\Block\Subscribe" name="newsletter_popup" template="subscribe_popup.phtml" ifconfig="destino/advanced/show_newsletter_popup"/>
+        </referenceContainer>
+
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Theme\Block\Html\Header" name="theme_header" template="html/header.phtml" before="main.content">
+				<block class="Magento\Theme\Block\Html\Header\Logo" name="logo-mobile" as="logo-mobile" template="Magento_Theme::html/header/logo-mobile.phtml"/>
+                <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">header links</argument>
+                    </arguments>
+                </block>
+				
+                <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="switch/languages.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+
+				<block class="Magento\Theme\Block\Html\Topmenu" name="nav.mobile" template="html/nav-mobile.phtml"/>
+                <block class="Magento\Theme\Block\Html\Topmenu" name="nav.mobile.new.block" template="Magento_Theme::html/nav-mobile.phtml"/>
+
+				<block class="Magento\Customer\Block\Form\Login" name="customer_form_login_sticky" template="form/login_mobile.phtml">
+                    <container name="form.additional.info" as="form_additional_info"/>
+                </block>
+				
+				<block class="Sm\CategoriesMenu\Block\CategoriesMenu" name="categoriesmenu.default" as="categoriesmenu_default" template="Sm_CategoriesMenu::default.phtml" />
+            </block>
+        </referenceContainer>
+
+        <!-- <move element="customer_account_navigation" destination="theme_header"/> -->
+        <!-- <move element="page.main.title" destination="theme_header"/> -->
+        <move element="catalog.topnav" destination="theme_header"/>
+        <move element="top.search" destination="theme_header"/>
+        <move element="minicart" destination="theme_header"/>
+        <move element="currency" destination="theme_header"/>
+        <move element="logo" destination="theme_header"/>
+        <move element="skip_to_content" destination="theme_header"/>
+
+        <move element="page.top" destination="page.wrapper" after="theme_header"/>
+
+        <referenceContainer name="header.container" remove="1"/>
+        <referenceContainer name="header.panel" remove="1"/>
+        <referenceContainer name="header-wrapper" remove="1"/>
+		<referenceContainer name="navigation.sections" remove="1"/>
+		<referenceBlock name="wishlist_sidebar" remove="true"/>
+		<referenceBlock name="sale.reorder.sidebar" remove="true"/>
+		
+		<referenceContainer name="footer" remove="true"/> 
+		<referenceBlock name="report.bugs" remove="true"/>
+
+        <referenceContainer name="sidebar.additional">
+			<block class="Magento\Cms\Block\Block" name="banner-image-sidebar">
+				<arguments>
+					<argument name="block_id" xsi:type="string">banner-image-sidebar</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+		
+		<referenceContainer name="div.sidebar.button.left">
+			<block class="Magento\Framework\View\Element\Template" name="sidebar.button.left" template="Magento_Theme::html/button-sidebar.phtml" />
+		</referenceContainer>
+		
+		<referenceContainer name="div.sidebar.button.right">
+			<block class="Magento\Framework\View\Element\Template" name="sidebar.button.right" template="Magento_Theme::html/button-sidebar.phtml" />
+		</referenceContainer>
+		
+        <referenceContainer name="footer-container">
+            <block class="Magento\Theme\Block\Html\Footer" name="footer_block" template="html/footer.phtml">
+                <block class="Magento\Store\Block\Switcher" name="footer.store_switcher" template="switch/stores.phtml"/>
+                <block class="Magento\Newsletter\Block\Subscribe" name="footer.newsletter" template="subscribe_footer.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

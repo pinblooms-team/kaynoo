@@ -1,0 +1,11 @@
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+.admin__menu .item-trashmanager.level-0 > a:before{
+	content: '\e630' !important;
+}

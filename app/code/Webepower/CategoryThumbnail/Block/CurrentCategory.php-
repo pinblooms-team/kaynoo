@@ -1,0 +1,25 @@
+<?php
+namespace Webepower\CategoryThumbnail\Block;
+
+class CurrentCategory extends \Magento\Framework\View\Element\Template
+{
+    public function __construct(
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Framework\Registry $registry,
+        array $data = []
+    ) {
+        $this->registry = $registry;
+        parent::__construct($context, $data);
+    }
+
+    /* $categoryId as category id */
+    public function getCategory(){
+        try {
+            $category = $this->registry->registry('current_category');
+            $subcats = $category->getChildrenCategories();
+            return $subcats
+        } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
+            return ['response' => 'Category Not Found'];
+        }
+    }
+}

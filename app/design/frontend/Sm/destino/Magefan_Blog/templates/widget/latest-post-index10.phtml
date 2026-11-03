@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright © 2016 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog recent posts widget
+ *
+ * @var $block \Magefan\Blog\Block\Widget\Recent
+ */
+?>
+
+<?php
+$_postCollection = $block->getPostCollection();
+?>
+<?php if ($_postCollection->count()) { ?>
+    <div class="post-list-wrapper blog-widget-recent">
+    <div class="latest-post-grid clearfix">
+        <?php foreach ($_postCollection as $_post) { ?>
+			<?php
+			$_postUrl  = $_post->getPostUrl();
+			$_postName = $block->escapeHtml($_post->getTitle(), null, true);
+			?>
+            <div class="item">
+				<div class="item-post">
+					<div class="date-post">
+						<?php
+						$date_post = $_post->getPublishDate('Y-m-d');
+						$day       = date('d', strtotime($date_post));
+						$month     = date('F', strtotime($date_post));
+						?>
+
+                        <div class="day-post"><?php echo $day; ?></div>
+						<div class="month-post">/ <?php echo $month; ?></div>
+					</div>
+					
+					<div class="post-info">
+						<h3>
+							<a class="post-item-link" href="<?php echo $_postUrl ?>"> <?php echo $_postName; ?></a>
+						</h3>
+						
+						<div class="short-content">
+							<?php
+							$content    = $block->getShorContent($_post);
+							$short_text = strip_tags($content);
+							echo substr($short_text, 0, 120) . '.';
+							?>
+						</div>
+						
+						<a class="view-more-post" href="<?php echo $_postUrl ?>"><?php echo __('View More') ?></a>
+					</div>
+				</div>
+            </div>
+		<?php } ?>
+    </div>
+</div>
+<?php } ?>

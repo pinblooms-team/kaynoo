@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <body>
+    <referenceContainer name="content">
+      <block class="Magento\Backend\Block\Template"
+             name="pinblooms_default_comments_shipment"
+             template="Pinblooms_AdminDefaultComments::defaultcomments.phtml">
+        <arguments>
+          <argument name="scope" xsi:type="string">shipment</argument>
+        </arguments>
+      </block>
+    </referenceContainer>
+  </body>
+</page>

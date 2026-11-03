@@ -1,0 +1,79 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Update Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+    <div class="box-tocart update">
+        <fieldset class="fieldset">
+            <?php if ($block->shouldRenderQuantity()): ?>
+                <div class="field qty">
+                <label class="label" for="qty"><span><?= /* @escapeNotVerified */
+						__('Qty') ?></span></label>
+                <div class="control control-qty-cart">
+                    <input type="number"
+                           name="qty"
+                           id="qty"
+                           value=""
+                           title="<?= /* @escapeNotVerified */
+						   __('Qty') ?>"
+                           class="input-text qty qty-default-update"
+                           data-validate="{'required-number':true,digits:true}"/>
+						   
+						   <div class="control-qty">
+								<span class="quantity-controls quantity-plus"></span>
+								<span class="quantity-controls quantity-minus"></span>
+
+								<script type="text/javascript">
+									require([
+                                        'jquery'
+                                    ], function ($) {
+                                        $('.quantity-plus').click(function () {
+                                            $('.qty-default-update').val(Number($('.qty-default-update').val()) + 1);
+                                        });
+
+                                        $('.quantity-minus').click(function () {
+                                            var value = Number($('.qty-default-update').val()) - 1;
+                                            if (value > 0) {
+                                                $('.qty-default-update').val(value);
+                                            }
+
+                                        });
+                                    });
+								</script>
+							</div>
+                </div>
+            </div>
+			<?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?= /* @escapeNotVerified */
+						$buttonTitle ?>"
+                        class="action primary tocart"
+                        id="product-updatecart-button">
+                    <span><?= /* @escapeNotVerified */
+						$buttonTitle ?></span>
+                </button>
+				<?= $block->getChildHtml('', true) ?>
+            </div>
+        </fieldset>
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "#product_addtocart_form": {
+                "validation": {},
+                "addToCart": {
+                    "cartButtonId": "#product-updatecart-button",
+                    "cartForm": "#product_addtocart_form"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

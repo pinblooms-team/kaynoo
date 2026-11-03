@@ -1,0 +1,126 @@
+<?php
+
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+
+<?php
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menu        = $block->getHtml('level-top', 'submenu', $columnsLimit);
+$_config      = $this->helper('Sm\Destino\Helper\Data');
+?>
+
+<!--COLLAPSE-->
+<?php if ($_config->getHeader('responsive_menu') == 'collapse') { ?>
+	<div class="nav-mobile-container collapse-type">
+		<div class="btn-mobile">
+			<a id="collapse-button" class="button-mobile collapse-nav" title="<?php echo __('Categories') ?>"><i class="fa fa-bars"></i><span class="hidden"><?php echo __('Categories') ?></span></a>
+		</div>
+		<nav class="navigation-mobile">
+			<ul>
+				<?php /* @escapeNotVerified */
+				echo $_menu;
+				?>
+
+				<?php
+				$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+				$conf = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/display_other_menu');
+				$titleNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_title');
+				$hrefNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_link');
+				if ($conf) {
+				?>
+					<li class="level0 level-top">
+						<a class="level-top" href="<?php echo $this->getUrl($hrefNav) ?>">
+							<span><?php echo $titleNav; ?></span>
+						</a>
+					</li>
+
+				<?php } ?>
+			</ul>
+		</nav>
+
+		<script type="text/javascript">
+			require([
+				'jquery'
+			], function($) {
+				$('#collapse-button').click(function() {
+					$('.navigation-mobile').slideToggle(200);
+					$(this).toggleClass('active');
+				});
+
+				$('.navigation-mobile > ul li').has('ul').append('<span class="touch-button"><span>open</span></span>');
+
+				$('.touch-button').click(function() {
+					$(this).prev().slideToggle(200);
+					$(this).toggleClass('active');
+					$(this).parent().toggleClass('parent-active');
+				});
+
+			});
+		</script>
+	</div>
+<?php } ?>
+
+<!--SIDEBAR-->
+<?php if ($_config->getHeader('responsive_menu') == 'sidebar') { ?>
+	<div class="nav-mobile-container sidebar-type">
+		<div class="btn-mobile">
+			<div id="sidebar-button" class="button-mobile sidebar-nav" title="<?php echo __('Categories') ?>"><i class="fa fa-bars"></i><span class="hidden"><?php echo __('Categories') ?></span></div>
+		</div>
+		<nav class="navigation-mobile">
+			<ul>
+				<?php /* @escapeNotVerified */
+				echo $_menu;
+				?>
+
+				<?php
+				$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+				$conf = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/display_other_menu');
+				$titleNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_title');
+				$hrefNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_link');
+				if ($conf) {
+				?>
+					<li class="level0 level-top">
+						<a class="level-top" href="<?php echo $this->getUrl($hrefNav) ?>">
+							<span><?php echo $titleNav; ?></span>
+						</a>
+					</li>
+
+				<?php } ?>
+			</ul>
+		</nav>
+
+		<script type="text/javascript">
+			require([
+				'jquery'
+			], function($) {
+				$('#sidebar-button').click(function() {
+					$('body').toggleClass('navbar-active');
+					$(this).toggleClass('active');
+				});
+
+				$('.navigation-mobile > ul li').has('ul').append('<span class="touch-button"><span>open</span></span>');
+
+				$('.touch-button').click(function() {
+					$(this).prev().slideToggle(200);
+					$(this).toggleClass('active');
+					$(this).parent().toggleClass('parent-active');
+				});
+
+			});
+		</script>
+
+	</div>
+<?php } ?>

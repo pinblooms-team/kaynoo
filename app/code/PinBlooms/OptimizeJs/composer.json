@@ -1,0 +1,17 @@
+{
+    "name": "pinblooms/optimizejs",
+    "description": "",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+      "MIT"
+    ],
+    "autoload": {
+      "psr-4": {
+        "PinBlooms\\OptimizeJs\\": ""
+      },
+      "files": [
+        "registration.php"
+      ]
+    }
+  }

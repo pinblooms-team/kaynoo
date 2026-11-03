@@ -1,0 +1,68 @@
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+ 
+//
+//  Blank theme mobile styles
+//  _____________________________________________
+
+//  These mobile styles are mandatory and will be used as basis according to the mobile first design
+
+//  Include bootstrap
+//  ---------------------------------------------
+@import 'source/lib/bootstrap/_bootstrap.less';
+
+//  Include fontawesome
+//  ---------------------------------------------
+@import 'source/lib/fontawesome/less/_font-awesome.less';
+
+//  Include owl.carousel
+//  ---------------------------------------------
+@import 'source/lib/owl.carousel/_owl.carousel.less';
+
+//  Include fancybox
+//  ---------------------------------------------
+@import 'source/lib/_jquery.fancybox.less';
+
+//
+//  Global lib + theme styles + theme extends
+//  ---------------------------------------------
+
+@import 'source/_reset.less';
+@import '_styles.less';
+@import (reference) 'source/_extends.less';
+
+//
+//  Magento Import instructions
+//  ---------------------------------------------
+
+//@magento_import 'source/_module.less'; // Theme modules
+//@magento_import 'source/_widgets.less'; // Theme widgets
+
+
+
+
+//
+//  Media queries collector
+//  ---------------------------------------------
+
+@import 'source/lib/_responsive.less';
+
+@media-target: 'mobile'; // Sets target device for this file
+
+//
+//  Global variables override
+//  ---------------------------------------------
+
+@import 'source/_theme.less';
+
+//
+//  Extend for minor customisation
+//  ---------------------------------------------
+
+//@magento_import 'source/_extend.less';
+
+// INCLUDE LESS FILE THEME
+
+@import 'source/theme_style/_theme_style.less';

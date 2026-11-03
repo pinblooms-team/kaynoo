@@ -1,0 +1,75 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+if ($category) {
+    $subcats = $category->getChildrenCategories(); ?>
+    <ul class="circle-categories sub-category-slides">
+        <?php foreach ($subcats as $subcat) :
+            if ($subcat->getIsActive()) {
+                $sub_category = $objectManager->create('Magento\Catalog\Model\Category')->load($subcat->getId());
+                $subcat_url = $subcat->getUrl();
+                $categorythumbnail = $sub_category->getData('category_thumbnail');
+        ?>
+                <li class="circle-categories owl-item">
+                    <div class="circle-category-info">
+                        <div class="category-image-container">
+                            <a class="circle-category" href="<?php echo $subcat_url;  ?>">
+                                <div class="category-image">
+                                    <?php
+                                    if ($categorythumbnail === NULL || $categorythumbnail === '') { ?>
+                                        <img src="/media/catalog/category/9.png" width="160" height="160" alt="<?php echo $subcat->getName(); ?>">
+                                    <?php  } else { ?>
+                                        <img src="<?php echo $categorythumbnail ?>" width="160" height="160" alt="<?php echo $subcat->getName(); ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="category-name">
+                                    <span><?php echo $subcat->getName(); ?></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            <?php } ?>
+        <?php endforeach; ?>
+    </ul>
+<?php } else {
+    echo " ";
+}
+?>
+
+
+<script>
+    require([
+        'jquery',
+        'owlcarousel'
+    ], function($) {
+        "use strict";
+        // Block - home-category slider
+        jQuery(".sub-category-slides").owlCarousel({
+            items: 5,
+            autoplay: false,
+            loop: true,
+            nav: true,
+            dots: true,
+            autoplayHoverPause: true,
+            margin: 10,
+            lazyLoad: true,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 3
+                },
+                600: {
+                    items: 4
+                },
+                768: {
+                    items: 5,
+                    dots: false
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+    });
+</script>

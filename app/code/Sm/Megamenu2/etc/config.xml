@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<megamenu2>
+            <general>
+                <enable>1</enable>
+                <menu_type>fullwidth</menu_type>
+                <static_width>500px</static_width>
+                <max_level></max_level>
+            </general>
+			<other_menu>
+				<display_other_menu>1</display_other_menu>
+				<other_menu_title>Contact Us</other_menu_title>
+				<other_menu_link>contact</other_menu_link>
+			</other_menu>
+            <cat_labels>
+                <label1>New</label1>
+                <label2>Hot!</label2>
+                <label3>Sale</label3>
+            </cat_labels>
+		</megamenu2>
+	</default>
+</config>

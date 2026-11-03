@@ -1,0 +1,236 @@
+// /**
+//  * Copyright © 2015 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+@toolbar-mode-icon-font-size: 24px;
+@toolbar-element-background: @panel__background-color;
+
+.toolbar{
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  padding: 10px;
+  clear: both;
+  display: table;
+  width: 100%;
+  margin-bottom: 20px;
+
+  select{
+    height: 32px;
+    line-height: 30px;
+  }
+
+  .modes{
+    display: inline-block;
+    float: left;
+
+    .modes-label{
+      display: none;
+    }
+
+    .modes-mode{
+      float: left;
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      border: 1px solid #e5e5e5;
+      text-align: center;
+      line-height: 36px;
+      background-color: #fff;
+      color: #777777;
+      margin-right: 5px;
+      .transition(.2s);
+
+      span{
+        display: none;
+      }
+
+      &.active{
+        color: #fff;
+      }
+
+      &:hover{
+        color: #fff;
+      }
+
+      &.mode-grid{
+        &:before{
+          .font-awesome(f009,14px);
+        }
+      }
+
+      &.mode-list{
+        &:before{
+          .font-awesome(f00b,14px);
+        }
+      }
+    }
+  }
+
+  .toolbar-amount{
+    display: none;
+  }
+
+  .limiter{
+    float: left;
+    margin-right: 20px;
+    display: none;
+
+    .label{
+      display: inline-block;
+      vertical-align: middle;
+      margin:0;
+      padding:0;
+      line-height: 34px;
+    }
+
+    .control{
+      display: inline-block;
+      vertical-align: middle;
+      padding:0 5px;
+
+
+    }
+
+    .limiter-text{
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .toolbar-sorter.sorter{
+    float: left;
+
+    .sorter-label{
+      display: inline-block;
+      vertical-align: middle;
+      margin:0;
+      padding:0 5px 0 0;
+      line-height: 34px;
+    }
+
+    .sorter-options{
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0;
+      width: 105px;
+    }
+
+    .action.sorter-action{
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 5px;
+
+      &.sort-asc{
+        &:before{
+          .font-awesome(f176,14px);
+        }
+      }
+
+      &.sort-desc{
+        &:before{
+          .font-awesome(f175,14px);
+        }
+      }
+
+      span{
+        display: none;
+      }
+    }
+  }
+
+  .pages{
+    float: right;
+    line-height: 0;
+
+    .pages-items{
+      li{
+        float: left;
+        margin: 0 0 0 5px;
+
+        strong,
+        a{
+          color: inherit;
+          margin:0;
+          padding:0;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          display: inline-block;
+          min-width: 34px;
+          height: 34px;
+          text-align: center;
+          line-height: 34px;
+          font-weight: normal;
+          .transition(.2s);
+
+          &.action.next{
+            &:before{
+              display: none;
+            }
+
+            &:after{
+              .font-awesome(f105,16px);
+              line-height: 32px;
+            }
+          }
+
+          &.action.previous{
+            &:before{
+              display: none;
+            }
+
+            &:after{
+              .font-awesome(f104,16px);
+              line-height: 32px;
+            }
+          }
+        }
+
+        a:hover{
+          color: #fff;
+        }
+
+        strong{
+          color: #fff;
+        }
+      }
+    }
+  }
+
+}
+
+.toolbar-top{
+  .pages{
+    display: none;
+  }
+
+  .toolbar{
+    .toolbar-sorter{
+      &.sorter{
+        float: right;
+      }
+    }
+  }
+}
+
+.toolbar-bottom{
+  padding-top: 10px;
+
+  .toolbar{
+    margin: 0;
+
+    .toolbar-sorter{
+      display: none;
+    }
+  }
+}
+
+.col3-layout{
+  .toolbar-amount{
+    display: none!important;
+  }
+}

@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<?php
+$_config = $this->helper('Sm\Destino\Helper\Data');
+$mediaUrl = $_config->getMediaUrl();
+$logoMobile = $_config->getGeneral('logo_mobile');
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();
+?>
+
+<a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $storeName; ?>">
+	<?php if ($logoMobile) { ?>
+		<img loading="eager" src="<?php echo $mediaUrl . 'logomobile/' . $logoMobile; ?>" alt="<?php echo $storeName; ?>" width="414" height="101" />
+	<?php } ?>
+</a>

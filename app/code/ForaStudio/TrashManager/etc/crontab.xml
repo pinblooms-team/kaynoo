@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="trash_product_cleanup" instance="ForaStudio\TrashManager\Cron\ProductTrash" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="trash_category_cleanup" instance="ForaStudio\TrashManager\Cron\CategoryTrash" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

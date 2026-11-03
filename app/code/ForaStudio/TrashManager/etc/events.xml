@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_category_delete_before">
+        <observer name="category_trash_delete_before" instance="ForaStudio\TrashManager\Observer\CategoryDeleteBeforeObserver"/>
+    </event>
+    <event name="controller_action_postdispatch_catalog_category_delete">
+        <observer name="category_trash_delete_after" instance="ForaStudio\TrashManager\Observer\CategoryDeletePostDispatchObserver"/>
+    </event>
+     <event name="catalog_product_delete_before">
+        <observer name="catalog_product" instance="ForaStudio\TrashManager\Observer\ProductDeleteBeforeObserver"/>
+    </event>
+    <event name="controller_action_postdispatch_catalog_product_delete">
+        <observer name="product_trash_delete_after" instance="ForaStudio\TrashManager\Observer\ProductDeletePostDispatchObserver"/>
+    </event>
+</config>

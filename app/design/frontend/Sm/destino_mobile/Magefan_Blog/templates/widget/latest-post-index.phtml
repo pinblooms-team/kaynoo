@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * Copyright © 2016 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog recent posts widget
+ *
+ * @var $block \Magefan\Blog\Block\Widget\Recent
+ */
+?>
+
+<?php
+$_postCollection = $block->getPostCollection();
+
+$_config = $this->helper('Sm\Destino\Helper\Data');
+$enableLadyLoading = $_config->getAdvanced('enable_ladyloading');
+$mediaSrc = $_config->getMediaUrl();
+if ($enableLadyLoading) {
+	$imgClass = 'lazyload';
+} else {
+	$imgClass = '';
+}
+?>
+<?php if ($_postCollection->count()) { ?>
+	<div class="post-list-wrapper blog-widget-recent">
+		<div class="primary-title">
+			<h2><?php echo $block->escapeHtml($block->getTitle()) ?></h2>
+		</div>
+
+		<div class="scroll-block">
+			<div class="item-posts item-table">
+				<?php foreach ($_postCollection as $_post) { ?>
+					<?php
+					$_postUrl = $_post->getPostUrl();
+					$_postName = $block->escapeHtml($_post->getTitle(), null, true);
+					?>
+
+					<div class="item-post item-table-cell">
+						<div class="post-content post-ftimg-hld">
+							<div class="post-image">
+								<?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+									<div class="featured-image">
+										<a title="<?php echo $_postName; ?>" href="<?php echo $_postUrl ?>">
+											<img class="<?php echo $imgClass; ?>" <?php if ($enableLadyLoading) { ?> src="<?php echo $mediaSrc . 'lazyloading/blank.png'; ?>" data-src="<?php echo $featuredImage ?>" <?php } else { ?> src="<?php echo $featuredImage ?>" <?php } ?> alt="<?php echo $_postName ?>" width="700" height="357" loading="lazy" />
+										</a>
+									</div>
+								<?php } else { ?>
+									<div class="featured-image">
+										<a title="<?php echo $_postName; ?>" href="<?php echo $_postUrl ?>">
+											<img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/post/no_image.jpg') ?>" alt="<?php echo $_postName ?>" width="278" height="185" loading="lazy" />
+										</a>
+									</div>
+								<?php } ?>
+
+
+
+								<div class="date-post">
+									<?php
+										$date_post = $_post->getPublishDate('Y-m-d');
+										$day       = date('d', strtotime($date_post));
+										$month     = date('M', strtotime($date_post));
+										?>
+		
+										<div class="day-post"><?php echo $day; ?></div>
+										<div class="month-post"><?php echo $month; ?></div>
+								</div>
+							</div>
+
+							<div class="post-info">
+								<h3><a class="post-item-link" href="<?php echo $_postUrl ?>"> <?php echo $_postName; ?></a></h3>
+							</div>
+
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+<?php } ?>

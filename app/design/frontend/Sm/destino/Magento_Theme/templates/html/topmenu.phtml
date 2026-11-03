@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?php /* @escapeNotVerified */
+		echo $_menu; ?>
+		<?php /* @escapeNotVerified */
+		echo $block->getChildHtml(); ?>
+		
+		<?php
+			$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+			$conf = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/display_other_menu');
+			var_dump($conf);
+		?>
+    </ul>
+</nav>

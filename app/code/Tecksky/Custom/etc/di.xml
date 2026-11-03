@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Solution: Customer is not create after create follow up email rule -->
+    <!-- <type name="Amasty\Followup\Model\Formatmanager">
+        <plugin name="BeforeFormatDate" type="Tecksky\Custom\Overwrite\Amasty\Followup\Model\Formatmanager" sortOrder="1" />
+    </type> -->
+    <!-- Index not found issue at Sm\CategoriesMenu\Block\CategoriesMenu  -->
+    <preference for="Sm\CategoriesMenu\Block\CategoriesMenu" type="Tecksky\Custom\Overwrite\Sm\CategoriesMenu\Block\CategoriesMenu"/>
+    <!-- 20210525 category tab on search result page is not working -->
+    <type name="Mirasvit\Search\Block\Result">
+        <plugin name="BeforeGetTabUrl" type="Tecksky\Custom\Overwrite\Mirasvit\Search\Block\Result" sortOrder="1" />
+    </type>
+</config>

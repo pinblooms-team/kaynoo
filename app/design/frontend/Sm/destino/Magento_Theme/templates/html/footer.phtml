@@ -1,0 +1,923 @@
+<?php
+$_config      = $this->helper('Sm\Destino\Helper\Data');
+$footer_style = $_config->getFooter('footer_style');
+$show_gototop = $_config->getAdvanced('show_gototop');
+
+$display_footer_top    = $_config->getFooter('show_footertop');
+$display_footer_middle = $_config->getFooter('show_footermiddle');
+$display_footer_bottom = $_config->getFooter('show_footerbottom');
+?>
+<div class="footer <?php echo $footer_style; ?>">
+	<?php if ($footer_style == "footer-1") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact')->toHtml(); ?>
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="newsletter-info-footer">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description')->toHtml(); ?>
+						</div>
+					</div>
+					
+					<div class="col-lg-6">
+						<div class="footer-newsletter">
+							<?php echo $this->getChildHtml("footer.newsletter"); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6 col-lg-12">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-app')->toHtml(); ?>
+					</div>
+					
+					<div class="col-xl-6 col-lg-12">
+						<div class="payment-coppyright">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+
+							<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                                <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+							<?php } else { ?>
+                                <address><?php /* @escapeNotVerified */
+									echo $block->getCopyright() ?></address>
+							<?php } ?>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-2") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="newsletter-info-footer">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description')->toHtml(); ?>
+						</div>
+					</div>
+					
+					<div class="col-lg-6">
+						<div class="footer-newsletter">
+							<?php echo $this->getChildHtml("footer.newsletter"); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact')->toHtml(); ?>
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6 col-lg-12">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-app')->toHtml(); ?>
+					</div>
+					
+					<div class="col-xl-6 col-lg-12">
+						<div class="payment-coppyright">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+
+							<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                                <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+							<?php } else { ?>
+                                <address><?php /* @escapeNotVerified */
+									echo $block->getCopyright() ?></address>
+							<?php } ?>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-3") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact-2')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="newsletter-info-footer">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description2')->toHtml(); ?>
+						</div>
+						
+						<div class="footer-newsletter">
+							<?php echo $this->getChildHtml("footer.newsletter"); ?>
+						</div>
+					</div>
+					
+					<div class="col-lg-4">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                            <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+						<?php } else { ?>
+                            <address><?php /* @escapeNotVerified */
+								echo $block->getCopyright() ?></address>
+						<?php } ?>
+					</div>
+					
+					<div class="col-lg-6">
+						<div class="payment-coppyright">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-4") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top container-full">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-5">
+						<div class="footer-newsletter-title">
+							<h4 class="title-footer">sign up for newsletter</h4>
+						</div>
+					</div>
+					
+					<div class="col-lg-6 col-sm-7">
+						<div class="footer-newsletter">
+							<?php echo $this->getChildHtml("footer.newsletter"); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle container-full">
+			<div class="footer-middle-top">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-logo')->toHtml(); ?>
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+			</div>
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact-2')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                            <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+						<?php } else { ?>
+                            <address><?php /* @escapeNotVerified */
+								echo $block->getCopyright() ?></address>
+						<?php } ?>
+					</div>
+					
+					<div class="col-lg-6">
+						<div class="payment-coppyright">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-5") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top ">
+			<div class="container">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-services-footer')->toHtml(); ?>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="footer-middle-top">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-logo')->toHtml(); ?>
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+			</div>
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact-2')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-sm-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-">
+						<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                            <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+						<?php } else { ?>
+                            <address><?php /* @escapeNotVerified */
+								echo $block->getCopyright() ?></address>
+						<?php } ?>
+					</div>
+					
+					<div class="col-lg-6">
+						<div class="payment-coppyright">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-6") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="ft-block contact-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact')->toHtml(); ?>
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+				</div>
+				
+				<div class="ft-block service-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+				</div>
+				
+				<div class="ft-block extras-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+				</div>
+				
+				<div class="ft-block myaccount-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<div class="newsletter-info-footer">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description')->toHtml(); ?>
+						</div>
+					</div>
+					
+					<div class="col-lg-6 col-md-12">
+						<div class="footer-newsletter">
+							<?php echo $this->getChildHtml("footer.newsletter"); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="payment-coppyright">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+				</div>
+
+
+				<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                    <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+				<?php } else { ?>
+                    <address><?php /* @escapeNotVerified */
+						echo $block->getCopyright() ?></address>
+				<?php } ?>
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-7") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="footer-top-content">
+					<div class="col-footer col-footer-contact">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact')->toHtml(); ?>
+					</div>
+					
+					<div class="col-footer">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-footer">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-footer">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="footer-middle-content">
+					<div class="col-footer-social">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+					</div>
+					
+					<div class="col-footer-newsletter">
+						<div class="newsletter-info-footer">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description')->toHtml(); ?>
+						</div>
+						
+						<div class="footer-newsletter">
+							<?php echo $this->getChildHtml("footer.newsletter"); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="footer-bottom-content">
+					<div class="col-footer-payment">
+						<div class="payment">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+						</div>
+					</div>
+					
+					<div class="col-footer-appcopy">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-app')->toHtml(); ?>
+
+                        <div class="coppyright">
+							<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                                <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+							<?php } else { ?>
+                                <address><?php /* @escapeNotVerified */
+									echo $block->getCopyright() ?></address>
+							<?php } ?>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-8") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact-2')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3 col-md-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-md-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-md-6">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('social-list')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                            <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+						<?php } else { ?>
+                            <address><?php /* @escapeNotVerified */
+								echo $block->getCopyright() ?></address>
+						<?php } ?>
+					</div>
+					
+					<div class="col-lg-6 col-md-12">
+						<div class="payment-coppyright">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>	
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-9") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('services-footer')->toHtml(); ?>	
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact-3')->toHtml(); ?>
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-4">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-instagram')->toHtml(); ?>
+					</div>
+				</div>
+				
+				<div class="news-footer">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="newsletter-info-footer">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description-2')->toHtml(); ?>
+							</div>
+						</div>
+						
+						<div class="col-lg-6">
+							<div class="footer-newsletter">
+								<?php echo $this->getChildHtml("footer.newsletter"); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="payment-coppyright">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+
+					<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                        <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+					<?php } else { ?>
+                        <address><?php /* @escapeNotVerified */
+							echo $block->getCopyright() ?></address>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-10") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-top-ft10')->toHtml(); ?>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('services-footer-10')->toHtml(); ?>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="payment-coppyright">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+
+					<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                        <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+					<?php } else { ?>
+                        <address><?php /* @escapeNotVerified */
+							echo $block->getCopyright() ?></address>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-11") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="footer-top-content">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="newsletter-info-footer">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description')->toHtml(); ?>
+							</div>
+						</div>
+						
+						<div class="col-lg-6">
+							<div class="footer-newsletter">
+								<?php echo $this->getChildHtml("footer.newsletter"); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact-4')->toHtml(); ?>
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+				</div>
+				
+				<div class="middle-center">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-link-center')->toHtml(); ?>
+
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-link-categories')->toHtml(); ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="payment-coppyright">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+
+					<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                        <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+					<?php } else { ?>
+                        <address><?php /* @escapeNotVerified */
+							echo $block->getCopyright() ?></address>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+	<?php } elseif ($footer_style == "footer-12") { ?>
+		<?php if ($display_footer_top) { ?>
+            <div class="footer-top">
+			<div class="container">
+				<div class="ft-block contact-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact')->toHtml(); ?>
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+				</div>
+				
+				<div class="ft-block service-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+				</div>
+				
+				<div class="ft-block extras-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+				</div>
+				
+				<div class="ft-block myaccount-footer-container">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+            <div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<div class="newsletter-info-footer">
+							<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description')->toHtml(); ?>
+						</div>
+					</div>
+					
+					<div class="col-lg-6 col-md-12">
+						<div class="footer-newsletter">
+							<?php echo $this->getChildHtml("footer.newsletter"); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+            <div class="footer-bottom">
+			<div class="container">
+				<div class="app-content">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-app')->toHtml(); ?>
+				</div>
+
+
+				<div class="payment-coppyright-content">
+					<div class="payment-coppyright">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+					</div>
+					
+					<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+						<address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+					<?php } else { ?>
+						<address><?php /* @escapeNotVerified */
+							echo $block->getCopyright() ?></address>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+    <?php } elseif ($footer_style == "footer-13") { ?>
+        <?php if ($display_footer_top) { ?>
+        <div class="footer-top">
+            <div class="container">
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-top-ft13')->toHtml(); ?>
+            </div>
+        </div>
+        <?php } ?>
+
+        <?php if ($display_footer_middle) { ?>
+        <div class="footer-middle">
+            <div class="container">
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('services-footer-13')->toHtml(); ?>
+            </div>
+        </div>
+        <?php } ?>
+
+        <?php if ($display_footer_bottom) { ?>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="payment-coppyright">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+
+                    <?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                        <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+                    <?php } else { ?>
+                        <address><?php /* @escapeNotVerified */
+                            echo $block->getCopyright() ?></address>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+    <?php } elseif ($footer_style == "footer-14") { ?>
+		<?php if ($display_footer_top) { ?>
+        <div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-contact-3')->toHtml(); ?>
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-social')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-sm-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-service')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-sm-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-extras')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-sm-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-myaccount')->toHtml(); ?>
+					</div>
+					
+					<div class="col-lg-2 col-sm-3">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-infomation')->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_middle) { ?>
+        <div class="footer-middle">
+			<div class="container">
+				<div class="news-footer">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="newsletter-info-footer">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-newsletter-description')->toHtml(); ?>
+							</div>
+						</div>
+						
+						<div class="col-lg-6">
+							<div class="footer-newsletter">
+								<?php echo $this->getChildHtml("footer.newsletter"); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		
+		<?php if ($display_footer_bottom) { ?>
+        <div class="footer-bottom">
+			<div class="container">
+				<div class="payment-coppyright">
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment')->toHtml(); ?>
+
+					<?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                        <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+					<?php } else { ?>
+                        <address><?php /* @escapeNotVerified */
+							echo $block->getCopyright() ?></address>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+	<?php } ?>
+
+	<?php if ($show_gototop) { ?>
+        <a id="sm-totop" href="javascript:void(0)" title="<?php echo __('Go to Top') ?>"><em class="fa fa-arrow-up"></em></a>
+
+        <script type="text/javascript">
+			require([
+                'jquery'
+            ], function ($) {
+                $("#sm-totop").hide();
+                $(function () {
+                    var wh = $(window).height();
+                    var whtml = $(document).height();
+                    $(window).scroll(function () {
+                        if ($(this).scrollTop() > whtml / 10) {
+                            $('#sm-totop').fadeIn();
+                        } else {
+                            $('#sm-totop').fadeOut();
+                        }
+                    });
+                    $('#sm-totop').click(function () {
+                        $('body,html').animate({
+                            scrollTop: 0
+                        }, 800);
+                        return false;
+                    });
+                });
+            });
+		</script>
+	<?php } ?>
+</div>	
+
+
+

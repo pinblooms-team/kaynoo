@@ -1,0 +1,900 @@
+<?php
+$_config       = $this->helper('Sm\Destino\Helper\Data');
+$header_style  = $_config->getHeader('header_style');
+$ontop_element = '';
+if ($_config->getHeader('menu_ontop')) {
+    $ontop_element = 'ontop_element';
+} else {
+    $ontop_element = '';
+}
+?>
+<header class="page-header">
+    <?php if ($header_style == "header-1") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-8 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3 logo-container">
+                                <?php echo $this->getChildHtml("logo"); ?>
+                            </div>
+                            <div class="col-sm-9 right-container">
+                                <div class="search-header-container">
+                                    <?php  echo $this->getChildHtml("search-header"); ?>
+                                </div>
+
+                                <div class="phone-header-container">
+                                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header-contact')->toHtml(); ?>
+                                </div>
+
+                                <div class="cart-header-container">
+                                    <?php echo $this->getChildHtml("minicart"); ?>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="nav-desktop-container">
+                        <?php echo $this->getChildHtml("sm.topnav"); ?>
+                    </div>
+
+                    <div class="navigation-mobile-container">
+                        <?php echo $this->getChildHtml("nav.mobile"); ?>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    <?php } elseif ($header_style == "header-2") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <?php echo $this->getChildHtml("logo"); ?>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="search-header-container">
+                                    <?php echo $this->getChildHtml("search-header"); ?>
+                                </div>
+
+                                <div class="phone-header-container">
+                                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header-contact')->toHtml(); ?>
+                                </div>
+
+                                <div class="cart-header-container">
+                                    <?php echo $this->getChildHtml("minicart"); ?>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="nav-desktop-container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="menu-vertical">
+                                    <?php
+                                    echo $this->getChildHtml("categoriesmenu_default");
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <?php echo $this->getChildHtml("sm.topnav"); ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navigation-mobile-container">
+                        <?php echo $this->getChildHtml("nav.mobile"); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } elseif ($header_style == "header-3") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container-full">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-5 setting-container">
+                                        <div class="header-top-left">
+                                            <?php echo $this->getChildHtml("currency"); ?>
+                                            <?php echo $this->getChildHtml("store_language"); ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-7 customer-container">
+                                        <div class="header-top-right">
+                                            <?php echo $this->getChildHtml("header.links"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php echo $this->getChildHtml("skip_to_content"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container-full">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 logo-wrapper">
+                                    <?php echo $this->getChildHtml("logo"); ?>
+                                </div>
+                                <div class="col-xl-6 col-lg-7">
+                                    <div class="header-menu <?php echo $ontop_element; ?>">
+                                        <div class="nav-desktop-container">
+                                            <?php echo $this->getChildHtml("sm.topnav"); ?>
+                                        </div>
+
+                                        <div class="navigation-mobile-container">
+                                            <?php echo $this->getChildHtml("nav.mobile"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-2">
+                                    <div class="right-content">
+                                        <div class="search-header-container">
+                                            <?php echo $this->getChildHtml("search-header"); ?>
+                                        </div>
+
+                                        <div class="cart-header-container">
+                                            <?php echo $this->getChildHtml("minicart"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } elseif ($header_style == "header-4") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container-full">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-3 customer-container">
+                                        <div class="header-top-right">
+                                            <?php echo $this->getChildHtml("header.links"); ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-9 setting-container">
+                                        <div class="header-top-left">
+                                            <?php echo $this->getChildHtml("currency"); ?>
+                                            <?php echo $this->getChildHtml("store_language"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php echo $this->getChildHtml("skip_to_content"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle <?php echo $ontop_element; ?>">
+                <div class="header-content">
+                    <div class="container-full">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 logo-wrapper">
+                                    <?php echo $this->getChildHtml("logo"); ?>
+                                </div>
+                                <div class="col-xl-6 col-lg-7 navigation-wrapper">
+                                    <div class="header-menu ">
+                                        <div class="nav-desktop-container">
+                                            <?php echo $this->getChildHtml("sm.topnav"); ?>
+                                        </div>
+
+                                        <div class="navigation-mobile-container">
+                                            <?php echo $this->getChildHtml("nav.mobile"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-2 customer-wrapper">
+                                    <div class="right-content">
+                                        <div class="search-header-container">
+                                            <?php echo $this->getChildHtml("search-header"); ?>
+                                        </div>
+
+                                        <div class="cart-header-container">
+                                            <?php echo $this->getChildHtml("minicart"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } elseif ($header_style == "header-5") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 logo-container">
+                                    <div class="logo-content">
+                                        <?php echo $this->getChildHtml("logo"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle <?php echo $ontop_element; ?>">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="middle-content">
+                            <div class="header-menu">
+                                <div class="nav-desktop-container">
+                                    <?php echo $this->getChildHtml("sm.topnav"); ?>
+                                </div>
+
+                                <div class="navigation-mobile-container">
+                                    <?php echo $this->getChildHtml("nav.mobile"); ?>
+                                </div>
+                            </div>
+
+                            <div class="right-content">
+                                <div class="search-header-container">
+                                    <?php echo $this->getChildHtml("search-header"); ?>
+                                </div>
+
+                                <div class="cart-header-container">
+                                    <?php echo $this->getChildHtml("minicart"); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } elseif ($header_style == "header-6") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <a id="btn-header-sidebar" href="javascript:void(0);" title="Navigation"></a>
+            <div class="header-middle <?php echo $ontop_element; ?>">
+                <div class="header-content">
+                    <div class="language-currency">
+                        <?php echo $this->getChildHtml("currency"); ?>
+                        <?php echo $this->getChildHtml("store_language"); ?>
+                    </div>
+
+                    <div class="logo-content">
+                        <?php echo $this->getChildHtml("logo"); ?>
+                    </div>
+
+
+                    <div class="cart-header-container">
+                        <?php echo $this->getChildHtml("minicart"); ?>
+                    </div>
+
+
+                    <div class="header-menu">
+                        <div class="nav-desktop-container">
+                            <?php echo $this->getChildHtml("sm.topnav"); ?>
+                        </div>
+
+                        <div class="navigation-mobile-container">
+                            <?php echo $this->getChildHtml("nav.mobile"); ?>
+                        </div>
+                    </div>
+
+
+                    <div class="search-header">
+                        <?php echo $this->getChildHtml("search-header"); ?>
+                    </div>
+
+                    <?php echo $this->getChildHtml("skip_to_content"); ?>
+
+                </div>
+
+                <div class="header-top">
+                    <?php echo $this->getChildHtml("header.links"); ?>
+                </div>
+
+            </div>
+        </div>
+    <?php } elseif ($header_style == "header-7") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container container-mid">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-8 col-sm-8 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+
+                            <div class="cart-header-container">
+                                <?php echo $this->getChildHtml("minicart"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle <?php echo $ontop_element; ?>">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-4 logo-container">
+                                <?php echo $this->getChildHtml("logo"); ?>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-5">
+                                <div class="header-menu">
+                                    <div class="nav-desktop-container">
+                                        <?php echo $this->getChildHtml("sm.topnav"); ?>
+                                    </div>
+
+                                    <div class="navigation-mobile-container">
+                                        <?php echo $this->getChildHtml("nav.mobile"); ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="search-header">
+                                    <?php echo $this->getChildHtml("search-header"); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php }
+    if ($header_style == "header-8") { ?>
+
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-8 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 search-header">
+                                <div class="search-block-content">
+                                    <?php echo $this->getChildHtml("search-header"); ?>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 logo-container">
+                                <div class="logo-content">
+                                    <?php echo $this->getChildHtml("logo"); ?>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 cart-header-container ">
+                                <?php echo $this->getChildHtml("minicart"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="nav-desktop-container">
+                        <?php echo $this->getChildHtml("sm.topnav"); ?>
+                    </div>
+
+                    <div class="navigation-mobile-container">
+                        <?php echo $this->getChildHtml("nav.mobile"); ?>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    <?php }
+    if ($header_style == "header-9") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 logo-container">
+                                    <?php echo $this->getChildHtml("logo"); ?>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="nav-desktop-container">
+                        <?php echo $this->getChildHtml("sm.topnav"); ?>
+                    </div>
+
+                    <div class="navigation-mobile-container">
+                        <?php echo $this->getChildHtml("nav.mobile"); ?>
+                    </div>
+
+                    <div class="right-menu">
+                        <div class="search-header-container">
+                            <?php echo $this->getChildHtml("search-header"); ?>
+                        </div>
+
+                        <div class="cart-container">
+                            <?php echo $this->getChildHtml("minicart"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php }
+    if ($header_style == "header-10") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="header-top-content">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-8 col-md-6 col-6 customer-container">
+                                        <div class="header-top-right clearfix">
+                                            <?php echo $this->getChildHtml("header.links"); ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6 col-lg-4 col-md-6 col-6 setting-container">
+                                        <div class="header-top-left clearfix">
+                                            <?php echo $this->getChildHtml("store_language"); ?>
+                                            <?php echo $this->getChildHtml("currency"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php echo $this->getChildHtml("skip_to_content"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="header-menu-content">
+                        <div class="logo-container">
+                            <?php echo $this->getChildHtml("logo"); ?>
+                        </div>
+
+                        <div class="nav-desktop-container">
+                            <?php echo $this->getChildHtml("sm.topnav"); ?>
+                        </div>
+
+                        <div class="navigation-mobile-container">
+                            <?php echo $this->getChildHtml("nav.mobile"); ?>
+                        </div>
+
+                        <div class="right-menu">
+                            <div class="search-header-container">
+                                <?php echo $this->getChildHtml("search-header"); ?>
+                            </div>
+
+                            <div class="cart-container">
+                                <?php echo $this->getChildHtml("minicart"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } elseif ($header_style == "header-11") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-4 social-container">
+                                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('social-header')->toHtml(); ?>
+                                </div>
+
+                                <div class="col-xl-8 customer-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-5 col-6 logo-container">
+                                <?php echo $this->getChildHtml("logo"); ?>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-7 searchpro-container">
+                                <?php echo $this->getChildHtml("searchbox.pro"); ?>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-2 col-md-7 col-6 right-container">
+                                <div class="cart-header-container">
+                                    <?php echo $this->getChildHtml("minicart"); ?>
+                                </div>
+
+                                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('call-free')->toHtml(); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 vertical-container">
+                            <?php
+                            echo $this->getChildHtml("categoriesmenu_default");
+                            ?>
+                        </div>
+
+                        <div class="col-lg-9 col-md-9 horizontal-container">
+                            <div class="nav-desktop-container">
+                                <?php echo $this->getChildHtml("sm.topnav"); ?>
+                            </div>
+
+                            <div class="navigation-mobile-container">
+                                <?php echo $this->getChildHtml("nav.mobile"); ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    <?php } elseif ($header_style == "header-12") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-6 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-8 col-6 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3 logo-container">
+                                <?php echo $this->getChildHtml("logo"); ?>
+                            </div>
+                            <div class="col-sm-6 middle-container">
+                                <div class="search-header-container">
+                                    <?php echo $this->getChildHtml("searchbox.pro"); ?>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 right-container">
+                                <div class="cart-header-container">
+                                    <?php echo $this->getChildHtml("minicart"); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="menu-content">
+                        <div class="nav-desktop-container">
+                            <?php echo $this->getChildHtml("sm.topnav"); ?>
+                        </div>
+
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('hotline-hd12')->toHtml(); ?>
+
+                        <div class="navigation-mobile-container">
+                            <?php echo $this->getChildHtml("nav.mobile"); ?>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    <?php } elseif ($header_style == "header-13") { ?>
+
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 setting-container">
+                                    <div class="header-top-left">
+                                        <?php echo $this->getChildHtml("currency"); ?>
+                                        <?php echo $this->getChildHtml("store_language"); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-8 customer-container">
+                                    <div class="header-top-right">
+                                        <?php echo $this->getChildHtml("header.links"); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $this->getChildHtml("skip_to_content"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 search-header">
+                                <div class="search-block-content">
+                                    <?php echo $this->getChildHtml("search-header"); ?>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 logo-container">
+                                <div class="logo-content">
+                                    <?php echo $this->getChildHtml("logo"); ?>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 cart-header-container ">
+                                <?php echo $this->getChildHtml("minicart"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-menu <?php echo $ontop_element; ?>">
+                <div class="container">
+                    <div class="nav-desktop-container">
+                        <?php echo $this->getChildHtml("sm.topnav"); ?>
+                    </div>
+
+                    <div class="navigation-mobile-container">
+                        <?php echo $this->getChildHtml("nav.mobile"); ?>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    <?php } elseif ($header_style == "header-14") { ?>
+        <div class="<?php echo $header_style; ?>">
+            <div class="header-top">
+                <div class="panel-wrapper">
+                    <div class="panel-header">
+                        <div class="container-full">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-7 col-sm-7 customer-container">
+                                        <div class="header-top-right">
+                                            <?php echo $this->getChildHtml("header.links"); ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-5 col-sm-5 setting-container">
+                                        <div class="header-top-left">
+                                            <?php echo $this->getChildHtml("store_language"); ?>
+                                            <?php echo $this->getChildHtml("currency"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php echo $this->getChildHtml("skip_to_content"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="header-content">
+                    <div class="container-full">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-2 logo-wrapper">
+                                    <?php echo $this->getChildHtml("logo"); ?>
+                                </div>
+                                <div class="col-xl-6 col-lg-7">
+                                    <div class="header-menu <?php echo $ontop_element; ?>">
+                                        <div class="nav-desktop-container">
+                                            <?php echo $this->getChildHtml("sm.topnav"); ?>
+                                        </div>
+
+                                        <div class="navigation-mobile-container">
+                                            <?php echo $this->getChildHtml("nav.mobile"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3">
+                                    <div class="right-content">
+                                        <div class="search-header-container">
+                                            <?php echo $this->getChildHtml("search-header"); ?>
+                                        </div>
+
+                                        <div class="cart-header-container">
+                                            <?php echo $this->getChildHtml("minicart"); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+</header>

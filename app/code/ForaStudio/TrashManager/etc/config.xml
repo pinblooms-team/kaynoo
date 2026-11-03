@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <forastudio_trashmanager>
+            <trashmanager>
+                <enable>1</enable>
+                <display_text>TrashManager</display_text>
+            </trashmanager>
+            <product>
+            	<clear_after_days>7</clear_after_days>
+            </product>
+            <category>
+            	<clear_after_days>7</clear_after_days>
+            </category>
+        </forastudio_trashmanager>
+    </default>
+</config>
