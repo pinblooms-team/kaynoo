@@ -1,0 +1,8 @@
+<?php
+$_product = $block->getProduct();
+
+if ($_product->getFeatured() == true) { ?>
+    <div class="product-detail-label sale-livraison_express">
+        <img src="<?= $this->getViewFileUrl('images/livraison_express-detail.png'); ?>" alt="Livraison Express" width="158" height="40" />
+    </div>
+<?php }

@@ -1,0 +1,95 @@
+<?php
+
+/** @var Amasty\BannerSlider\Block\Widget\Slider $block */
+/** @var Magento\Framework\Escaper $escaper */
+
+use Amasty\BannerSlider\Model\ImageProcessor;
+
+$slider = $block->getSlider();
+?>
+
+<?php if ($slider && count($block->getBanners())) : ?>
+    <div class="ambanner-slider-container">
+        <div class="ambanner-slider-wrap -alignment-<?= $escaper->escapeHtmlAttr($block->getAlignment()) ?>" data-ambanner-js="slider-wrapper" style="max-width: <?= $escaper->escapeHtmlAttr($slider->getBannerWidth()) ?>px;">
+            <?php if ($block->getData('show_name')) : ?>
+                <h2 class="ambanner-title">
+                    <?= $escaper->escapeHtml($slider->getName()) ?>
+                </h2>
+            <?php endif; ?>
+            <div class="ambanner-slider-block <?= $escaper->escapeHtmlAttr($block->getSliderClass()) ?>
+            <?= $slider->isLazyLoadEnabled() && $slider->isLazyLoadFirstImage() ? '-ambanner-preloader' : '' ?>" data-ambanner-js="slider" data-mage-init='{"amSlider":{
+                 "sliderBlockWidth": <?= $escaper->escapeJs($slider->getBannerWidth()) ?>,
+                 "sliderAnimationEffect": <?= $escaper->escapeJs($slider->getAnimationEffect()) ?>,
+                 "transitionSpeed": <?= $escaper->escapeJs($slider->getTransitionSpeed()) ?>,
+                 "isAutoplay": <?= /* @noEscape */ $slider->getAutoplay() ? 'true' : 'false' ?>,
+                 "isLazyload": <?= /* @noEscape */ $slider->isLazyLoadEnabled() ? 'true' : 'false' ?>,
+                 "sliderOptions": {
+                     "arrows": <?= /* @noEscape */ $slider->getNavigationArrows() ? 'true' : 'false' ?>,
+                     "dots": <?= /* @noEscape */ $slider->getNavigationBullets() ? 'true' : 'false' ?>,
+                     "autoplay": <?= /* @noEscape */ $slider->getAutoplay() ? 'true' : 'false' ?>,
+                     "autoplaySpeed": <?= $escaper->escapeJs($slider->getPauseTime()) ?>,
+                     "speed": <?= $escaper->escapeJs($slider->getTransitionSpeed()) ?>,
+                     "responsive": [{
+                         "breakpoint": 768,
+                         "settings": {
+                             <?php if ($slider->getNavigationArrows()) : ?>
+                             "arrows": <?= /* @noEscape */ $slider->getNavigationBullets() ? 'false' : 'true' ?>,
+                             <?php endif; ?>
+                             "dots": <?= /* @noEscape */ $slider->getNavigationBullets() ? 'true' : 'false' ?>
+                         }
+                     }]
+                 }
+             }}'>
+                <?php foreach ($block->getBanners() as $counter => $banner) : ?>
+                    <?php $scaledHeight = $block->getScaledHeight($banner) ?>
+                    <?php $images = $block->getImages($banner) ?>
+                    <?php $isFirst = $counter === 0 && !$slider->isLazyLoadFirstImage() ?>
+                    <?php $defaultImage = $images[ImageProcessor::DEFAULT_IMAGE] ?>
+                    <?php $mobileImage = $images[ImageProcessor::MOBILE_IMAGE] ?? $defaultImage ?>
+                    <?php $mobileImage2x = $images[ImageProcessor::MOBILE_IMAGE_L] ?? $defaultImage ?>
+                    <?php $resizedImage = $images[ImageProcessor::RESIZED_IMAGE] ?? $defaultImage ?>
+                    <div class="ambanner-item-block" data-ambanner-js="item" data-mage-init='{"amAnalytic":{
+                        "elementId": "<?= $escaper->escapeJs($banner->getId()) ?>",
+                        "url": {
+                            "view": "<?= $escaper->escapeUrl($block->getAnalyticUrl('view')) ?>",
+                            "click": "<?= $escaper->escapeUrl($block->getAnalyticUrl('click')) ?>"
+                        }
+                     }}'>
+                        <picture class="ambanner-image-block <?= /* @noEscape */ $banner->getHoverText() ? '-overlay' : '' ?>">
+                            <?php if ($slider->getResizeImages()) : ?>
+                                <?php if ($slider->isLazyLoadEnabled()) : ?>
+                                    <source media="(min-width: 768px)" <?= $isFirst ? 'srcset' : 'data-srcset' ?><?= '="' .
+                                                                                                                        $escaper->escapeUrl($defaultImage) . ' 2x, ' .
+                                                                                                                        $escaper->escapeUrl($resizedImage) . ' 1x"' ?> />
+                                    <source media="(max-width: 768px)" <?= $isFirst ? 'srcset' : 'data-srcset' ?><?= '="' .
+                                                                                                                        $escaper->escapeUrl($mobileImage2x) . ' 2x, ' .
+                                                                                                                        $escaper->escapeUrl($mobileImage) . ' 1x"' ?> />
+                                <?php else : ?>
+                                    <source media="(min-width: 768px)" srcset="<?= $escaper->escapeUrl($defaultImage) ?> 2x, <?= $escaper->escapeUrl($resizedImage) ?> 1x" />
+                                    <source media="(max-width: 768px)" srcset="<?= $escaper->escapeUrl($mobileImage2x) ?> 2x, <?= $escaper->escapeUrl($mobileImage) ?> 1x" />
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <img class="ambanner-image <?= $slider->isLazyLoadEnabled() ? 'ambanner-lazy' : '' ?> <?= $isFirst ? 'ignore-lazy-load' : '' ?>" data-ambanner-js="image" <?php if ($slider->isLazyLoadEnabled()) : ?> <?= $isFirst ? 'src' : 'data-lazy' ?><?= '="' . $escaper->escapeUrl($resizedImage) . '"' ?> <?php else : ?> src="<?= $escaper->escapeUrl($resizedImage) ?>" <?php endif; ?> alt="<?= $escaper->escapeHtmlAttr($banner->getImageAlt()) ?>" height="1250" width="250" />
+                        </picture>
+                        <?php if ($banner->getHoverText()) : ?>
+                            <button class="ambanner-button -show-overlay ambanner-icon -show-more" data-ambanner-js="show-more" title="<?= $escaper->escapeHtmlAttr(__('Show content')) ?>" aria-label="<?= $escaper->escapeHtmlAttr(__('Show content')) ?>">
+                                <?= $escaper->escapeHtml(__('Show content')) ?>
+                            </button>
+                            <div class="ambanner-content-overlay">
+                                <span class="ambanner-overlay-circle" data-ambanner-js="overlay"></span>
+                                <div class="ambanner-content-block" data-ambanner-js="content-block">
+                                    <div class="ambanner-inner" data-ambanner-js="content-inner">
+                                        <?= /* @noEscape */ $banner->getHoverText() ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($banner->getTargetUrl()) : ?>
+                            <a class="ambanner-link" title="<?= $escaper->escapeHtmlAttr($banner->getImageAlt()) ?>" target="<?= $escaper->escapeHtmlAttr($banner->getTargetType()) ?>" href="<?= $escaper->escapeUrl($banner->getTargetUrl()) ?>"></a>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

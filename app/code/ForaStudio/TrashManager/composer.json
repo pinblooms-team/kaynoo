@@ -1,0 +1,20 @@
+{
+  "name": "forastudio/module-trashmanager",
+  "description": "Magento2 Trash Manager Module",
+  "require": {
+    "magento/framework": "~100.0.0|~100.1.0|~100.2.0|101.0.*|102.0.*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0"
+  ],
+  "autoload": {
+      "files": [
+          "registration.php"
+      ],
+      "psr-4": {
+          "ForaStudio\\TrashManager\\": ""
+      }
+  }
+}

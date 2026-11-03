@@ -1,0 +1,90 @@
+<?php
+$_config        = $this->helper('Sm\Destino\Helper\Data');
+$store_id       = $_config->getStoreId();
+$_css_load_file = $this->helper('Sm\Destino\Helper\Cssconfig');
+
+$main_font                = $_config->getFont('body_font');
+$main_google_font         = $_config->getFont('body_google_font');
+$google_font_element      = $_config->getFont('google_font_targets');
+$element_google_font_name = $_config->getFont('element_google_font');
+$headerStyle              = $_config->getHeader('header_style');
+$homeStyle                = $_config->getGeneral('home_style');
+$footerStyle              = $_config->getFooter('footer_style');
+$layout                   = $_config->getGeneral('layout_style');
+$product_hover            = $_config->getCategoryView('hover_image_effect');
+
+$right_to_left = $_config->getGeneral('rtl_layout');
+
+$enableLadyLoading = $_config->getAdvanced('enable_ladyloading');
+?>
+<?php if ($main_font == 'google_font') { ?>
+    <link rel="stylesheet" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=<?php echo $main_google_font ?>"/>
+<?php } ?>
+
+<?php if ($google_font_element != '') { ?>
+    <link rel="stylesheet" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=<?php echo $element_google_font_name ?>"/>
+<?php } ?>
+
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_css_load_file->getSettingsFile() ?>"/>
+
+<?php if ($right_to_left) { ?>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo $block->getViewFileUrl('css/styles-rtl.css'); ?>"/>
+<?php } ?>
+
+<style>
+<?php echo $_config->getAdvanced('custom_css');?>
+</style>
+
+<script type="text/javascript">
+	require([
+        'jquery',
+        'jquerypopper',
+        'jqueryunveil',
+        'yttheme',
+        'domReady!'
+    ], function ($, Popper) {
+		<?php if($enableLadyLoading){ ?>
+        function _runLazyLoad() {
+            $("img.lazyload").unveil(0, function () {
+                $(this).on('load', function () {
+                    this.classList.remove("lazyload");
+                });
+            });
+        }
+
+        _runLazyLoad();
+        $(document).on("afterAjaxLazyLoad", function (event) {
+            _runLazyLoad();
+        });
+
+		<?php } ?>
+    });
+</script>
+
+
+<script type="text/javascript">
+	require([
+        'jquery',
+        'domReady!'
+    ], function ($) {
+		<?php if($homeStyle == 'home-3' || $homeStyle == 'home-4' || $homeStyle == 'home-5'){ ?>
+        var title_page = $('.page-title-wrapper .page-title').html();
+        $('.columns .page-title-wrapper').hide();
+
+        //console.log($('.cms-index-index').length);
+
+        if ($('.cms-index-index').length == 0) {
+            if ($('.breadcrumbs').length) {
+                $(".breadcrumbs ul.items").before("<div class='page-title'>" + title_page + "</div>");
+            } else {
+                $("#maincontent").before("<div class='breadcrumbs no-breadcrumbs'><div class='page-title'>" + title_page + "</div></div>");
+            }
+        }
+
+
+		<?php } ?>
+    });
+
+</script>
+
+<?php echo $_config->getAdvanced('custom_js'); ?>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="fora_studio" translate="label" sortOrder="300">
+            <label>Fora Studio</label>
+        </tab> 
+        <section id="forastudio_trashmanager" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Trash Manager Configuration</label>
+            <tab>fora_studio</tab>
+            <resource>ForaStudio_TrashManager::config_trashmanager</resource>
+            <group id="trashmanager" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>TrashManager Configurations</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="product" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Trash Configurations</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Product Trash</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="forastudio_trashmanager/trashmanager/enable">1</field>
+                    </depends>
+                </field>
+                <field id="clear_after_days" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Clear Product Trash After Days</label>
+                    <comment>Default is 7 days, set 0 to disable auto trash clear</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="forastudio_trashmanager/trashmanager/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="category" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Category Trash Configurations</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Category Trash</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="forastudio_trashmanager/trashmanager/enable">1</field>
+                    </depends>
+                </field> 
+                <field id="clear_after_days" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Clear Category Trash After Days</label>
+                    <comment>Default is 7 days, set 0 to disable auto trash clear</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="forastudio_trashmanager/trashmanager/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+

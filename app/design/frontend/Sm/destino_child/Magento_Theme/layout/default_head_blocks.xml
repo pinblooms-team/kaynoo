@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0"/>
+
+        <remove src="Magefan_Blog::css/blog-custom.css"/>
+        <css src="css/category-mageplaza-banners.css"/>
+    </head>
+</page>

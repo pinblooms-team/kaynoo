@@ -1,0 +1,111 @@
+// desktop animation
+div#successpage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 1140px;
+    margin: auto;
+    z-index: 999;
+    background-image: url(https://kaynoo.sn/media/wysiwyg/thankyoupage/animation-2.gif);
+    height: 100vh;
+}
+
+// mobile animation
+div#successpage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 1140px;
+    margin: auto;
+    z-index: 999;
+}
+
+// wave payment button
+.pay-with-wave-container {
+    text-align: center;
+    display: inline-block;
+    margin-top: -15px;
+}
+
+.pay-with-wave-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pay-with-wave-container button:hover {
+    background-color: #0056b3;
+}
+
+.wave-logo {
+    width: 65px;
+    /* Adjust logo size to match the button */
+    height: auto;
+    border-radius: 5px;
+}
+
+#wave-info {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+#wave-amount-message {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.checkout-success .actions-toolbar {
+    margin-top: 10px;
+}
+
+.pay-with-wave-container button#custom-button,
+button#custom-button2 {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    background: #1ec8fe !important;
+    font-weight: 600;
+    line-height: 16px;
+    width: 100%;
+}
+
+.pay-with-wave-container button#custom-button:hover {
+    opacity: 0.9;
+}
+
+.pay-with-wave-container {
+    position: relative;
+    top: -15px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768.9px) {
+    .pay-with-wave-container.paybutton2 {
+        top: 0px;
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 768.5px) {
+
+    .pay-with-wave-container,
+    .pay-with-wave-container button#custom-button {
+        width: 100%;
+    }
+
+    .pay-with-wave-container.paybutton2 {
+        margin-left: auto;
+        top: 20px;
+        margin-bottom: 30px;
+    }
+}

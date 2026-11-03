@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Pinblooms\CheckoutGuard\Logger\Handler"
+                 type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">var/log/checkout_guard.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Pinblooms\CheckoutGuard\Logger\Logger"
+                 type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">checkout_guard</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Pinblooms\CheckoutGuard\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Pinblooms\CheckoutGuard\Model\GuardLogger">
+        <arguments>
+            <argument name="logger" xsi:type="object">Pinblooms\CheckoutGuard\Logger\Logger</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\QuoteGraphQl\Model\Resolver\SetGuestEmailOnCart">
+        <plugin name="pinblooms_checkout_guard_guest_email"
+                type="Pinblooms\CheckoutGuard\Plugin\GraphQl\ValidateGuestEmailOnCart"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\QuoteGraphQl\Model\Resolver\PlaceOrder">
+        <plugin name="pinblooms_checkout_guard_place_order"
+                type="Pinblooms\CheckoutGuard\Plugin\GraphQl\ValidateEmailBeforePlaceOrder"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\QuoteGraphQl\Model\Resolver\SetPaymentMethodOnCart">
+        <plugin name="pinblooms_checkout_guard_guest_checkmo"
+                type="Pinblooms\CheckoutGuard\Plugin\GraphQl\RestrictGuestCheckmoPayment"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\QuoteGraphQl\Model\Resolver\SetBillingAddressOnCart">
+        <plugin name="pinblooms_checkout_guard_billing_address"
+                type="Pinblooms\CheckoutGuard\Plugin\GraphQl\ValidateBillingAddressOnCart"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\QuoteGraphQl\Model\Resolver\SetShippingAddressesOnCart">
+        <plugin name="pinblooms_checkout_guard_shipping_address"
+                type="Pinblooms\CheckoutGuard\Plugin\GraphQl\ValidateShippingAddressesOnCart"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Helper\Data">
+        <plugin name="pinblooms_checkout_guard_suppress_bot_payment_failed_email"
+                type="Pinblooms\CheckoutGuard\Plugin\Checkout\SuppressBotPaymentFailedEmail"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="pinblooms_checkout_guard_rest_guest_payment"
+                type="Pinblooms\CheckoutGuard\Plugin\Checkout\ValidateGuestPaymentInformation"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteManagement">
+        <plugin name="pinblooms_checkout_guard_place_order_core"
+                type="Pinblooms\CheckoutGuard\Plugin\Quote\ValidateBeforePlaceOrder"
+                sortOrder="5"/>
+    </type>
+
+    <!-- Stop REST/API bots writing webshells into pub/media/custom_options -->
+    <type name="Magento\Quote\Api\GuestCartItemRepositoryInterface">
+        <plugin name="pinblooms_checkout_guard_block_guest_custom_option_file"
+                type="Pinblooms\CheckoutGuard\Plugin\Quote\BlockCustomOptionFileOnCartItem"
+                sortOrder="5"/>
+    </type>
+    <type name="Magento\Quote\Api\CartItemRepositoryInterface">
+        <plugin name="pinblooms_checkout_guard_block_customer_custom_option_file"
+                type="Pinblooms\CheckoutGuard\Plugin\Quote\BlockCustomOptionFileOnCartItem"
+                sortOrder="5"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product\Option\Type\File">
+        <plugin name="pinblooms_checkout_guard_block_file_option_type"
+                type="Pinblooms\CheckoutGuard\Plugin\Catalog\BlockFileCustomOptionType"
+                sortOrder="5"/>
+    </type>
+</config>

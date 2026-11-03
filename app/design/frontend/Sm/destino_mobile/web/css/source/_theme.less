@@ -1,0 +1,84 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Blank theme overrides
+//  _____________________________________________
+
+//  Theme file should contain declarations (overrides) ONLY OF EXISTING variables
+//  Otherwise this theme won't be available for parent nesting
+//  All new variables should be placed in local theme lib or local theme files
+
+//  _____________________________________________
+
+
+//  Primary button
+//  ---------------------------------------------
+@button__border-radius: 0;
+@button-primary__background: #333;
+@button-primary__border: none;
+@button-primary__color: #fff;
+@button__font-weight: normal;
+@button__font-size: 100%;
+@button__padding: 0 20px;
+
+@button-primary__hover__color: #fff;
+@button-primary__hover__border: none;
+
+@button__active__color: #fff;
+@button__active__border: none;
+
+//  Input-text
+//  ---------------------------------------------
+@input-text-placeholder__color: #333;
+
+@input-text__background: #fff;
+@input-text__border: 1px solid #ddd;
+@input-text__border-radius: 0;
+@input-text__height: 42px;
+@input-text__line-height: 40px;
+@input-text__width: 100%;
+@input-text__padding: 0 10px;
+@input-text__color: #666;
+@input-text__font-weight: normal;
+
+@textarea__border: 1px solid #ddd;
+
+//  Select
+//  ---------------------------------------------
+@select__border: 1px solid #ddd;
+@select__border-radius: 0;
+@select__padding: 0 20px 0 5px;
+@select__height: 42px;
+@select__line-height: 40px;
+
+// CUSTOM THEME MIXIN
+
+.font-awesome (@code, @size) {
+  content: '\@{code}';
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  font-synthesis: weight style;
+  font-stretch: normal;
+  font-size-adjust: none;
+  font-language-override: normal;
+  font-kerning: auto;
+  font-feature-settings: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font-size: @size;
+  font-display: swap;
+}
+
+.transition(@transition) {
+  transition: @transition;
+  -moz-transition: @transition;
+  -webkit-transition: @transition;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+      
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="trashmanager_product_listing_data_source" xsi:type="string">ForaStudio\TrashManager\Model\ResourceModel\ProductTrash\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="ForaStudio\TrashManager\Model\ResourceModel\ProductTrash\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">fora_product_trash</argument>
+            <argument name="resourceModel" xsi:type="string">ForaStudio\TrashManager\Model\ResourceModel\ProductTrash</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="trashmanager_category_listing_data_source" xsi:type="string">ForaStudio\TrashManager\Model\ResourceModel\CategoryTrash\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="ForaStudio\TrashManager\Model\ResourceModel\CategoryTrash\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">fora_category_trash</argument>
+            <argument name="resourceModel" xsi:type="string">ForaStudio\TrashManager\Model\ResourceModel\CategoryTrash</argument>
+        </arguments>
+    </virtualType>
+</config>

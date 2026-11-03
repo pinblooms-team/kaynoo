@@ -1,0 +1,41 @@
+/* Category homepage blocks: Mageplaza Banner Slider layout fit */
+.filter-subcat .filter-container .slider-banner-product.category-mp-slider .mp-banner-slider #banner-slider-carousel .owl-carousel .banner-item .item-image a,
+.filter-subcat .filter-container .slider-banner-product.category-mp-slider .mp-banner-slider #banner-slider-carousel .owl-carousel .banner-item .item-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.filter-subcat .filter-container .slider-banner-product.category-mp-slider .mp-banner-slider #banner-slider-carousel .owl-carousel .owl-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.filter-subcat .filter-container .slider-banner-product.category-mp-slider .mp-banner-slider #banner-slider-carousel .owl-carousel .owl-dots .owl-dot {
+    margin: 0 8px;
+    background-color: #fff !important;
+    opacity: 0.5;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.filter-subcat .filter-container .slider-banner-product.category-mp-slider .mp-banner-slider #banner-slider-carousel .owl-carousel .owl-dots .owl-dot:hover,
+.filter-subcat .filter-container .slider-banner-product.category-mp-slider .mp-banner-slider #banner-slider-carousel .owl-carousel .owl-dots .owl-dot.active {
+    opacity: 1;
+}
+
+.filter-subcat .filter-container .product-container .banner-product .banner-product-content.category-mp-banner .mp-banner-slider #banner-slider-carousel .owl-carousel .banner-item .item-image a,
+.filter-subcat .filter-container .product-container .banner-product .banner-product-content.category-mp-banner .mp-banner-slider #banner-slider-carousel .owl-carousel .banner-item .item-image img {
+    display: block;
+    width: 100%;
+    max-width: 375px;
+    height: auto;
+}
+
+.filter-subcat .filter-container .product-container .banner-product .banner-product-content.category-mp-banner .mp-banner-slider #banner-slider-carousel .owl-carousel .owl-dots,
+.filter-subcat .filter-container .product-container .banner-product .banner-product-content.category-mp-banner .mp-banner-slider #banner-slider-carousel .owl-carousel .owl-nav {
+    display: none;
+}

@@ -1,0 +1,69 @@
+<?php
+$om = \Magento\Framework\App\ObjectManager::getInstance();
+/** @var \Pinblooms\AdminDefaultComments\Helper\Data $helper */
+$helper = $om->get(\Pinblooms\AdminDefaultComments\Helper\Data::class);
+
+$configTexts = [
+  'order'      => trim((string)$helper->get('order')),
+  'invoice'    => trim((string)$helper->get('invoice')),
+  'shipment'   => trim((string)$helper->get('shipment')),
+  'creditmemo' => trim((string)$helper->get('creditmemo')),
+];
+?>
+<script>
+(function () {
+  // Map each form's specific selectors to its own text
+  var targets = [
+    // Order → View → Comments
+    { sels: ['textarea[name="history[comment]"]'],
+      text: <?php echo json_encode($configTexts['order'], JSON_HEX_TAG|JSON_HEX_APOS|JSON_HEX_AMP|JSON_HEX_QUOT); ?> },
+
+    // Invoice → Create → Comments
+    { sels: ['textarea[name="invoice[comment_text]"]','#invoice_comment_text'],
+      text: <?php echo json_encode($configTexts['invoice'], JSON_HEX_TAG|JSON_HEX_APOS|JSON_HEX_AMP|JSON_HEX_QUOT); ?> },
+
+    // Shipment → Create → Comments
+    { sels: ['textarea[name="shipment[comment_text]"]','#shipment_comment_text','textarea[name="comment[comment]"]'],
+      text: <?php echo json_encode($configTexts['shipment'], JSON_HEX_TAG|JSON_HEX_APOS|JSON_HEX_AMP|JSON_HEX_QUOT); ?> },
+
+    // Credit Memo → Create → Comments
+    { sels: ['textarea[name="creditmemo[comment_text]"]','#creditmemo_comment_text'],
+      text: <?php echo json_encode($configTexts['creditmemo'], JSON_HEX_TAG|JSON_HEX_APOS|JSON_HEX_AMP|JSON_HEX_QUOT); ?> }
+  ];
+
+  function fillIfEmpty(el, text) {
+    if (!el) return;
+    if (!el.value || el.value.trim() === '') {
+      el.value = (text || '').trim();
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
+  function run() {
+    targets.forEach(function (t) {
+      if (!t.text) return;
+      t.sels.forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (el) {
+          fillIfEmpty(el, t.text);
+        });
+      });
+    });
+
+    // Optional: auto-check common checkboxes if present
+    ['[is_visible_on_front]', '[send_email]', '[comment_customer_notify]', '[is_customer_notified]']
+      .forEach(function (end) {
+        var box = document.querySelector('input[type="checkbox"][name$="' + end + '"]');
+        if (box && !box.checked) box.checked = true;
+      });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+  // Catch UI components rendered after load
+  new MutationObserver(run).observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>

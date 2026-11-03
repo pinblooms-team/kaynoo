@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="trashmanager" frontName="trashmanager">
+            <module name="ForaStudio_TrashManager"/>
+        </route>
+    </router>
+</config>

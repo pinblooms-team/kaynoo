@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+
+use Magento\Framework\App\ObjectManager;
+
+/** @var $block \Magento\Sales\Block\Order\Email\Items */
+?>
+<?php $_order = $block->getOrder() ?>
+<?php if ($_order) : ?>
+    <?php $_items = $_order->getAllItems(); ?>
+    <table class="email-items">
+        <thead>
+            <tr>
+                <th class="item-image">
+                    <?= $block->escapeHtml(__('Image')) ?>
+                </th>
+                <th class="item-info">
+                    <?= $block->escapeHtml(__('Items')) ?>
+                </th>
+                <th class="item-qty">
+                    <?= $block->escapeHtml(__('Qty')) ?>
+                </th>
+                <th class="item-price">
+                    <?= $block->escapeHtml(__('Price')) ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($_items as $_item) : ?>
+                <?php if (!$_item->getParentItem()) : ?>
+                    <?php
+                    $_product = $_item->getProduct();
+                    $objectManager = ObjectManager::getInstance();
+                    $imageHelper = $objectManager->get(\Magento\Catalog\Helper\Image::class);
+                    $priceHelper = $objectManager->get(\Magento\Framework\Pricing\Helper\Data::class);
+                    $_imageUrl = $imageHelper->init($_product, 'product_small_image')->getUrl();
+                    ?>
+                    <tr>
+                        <td class="item-image">
+                            <img src="<?= $_imageUrl ?>" alt="<?= $block->escapeHtml($_item->getName()) ?>" width="110" height="110" />
+                        </td>
+                        <td class="item-info">
+                            <strong><?= $block->escapeHtml($_item->getName()) ?></strong><br />
+                            <?= $block->escapeHtml(__('ID: %1', $_item->getProductId())) ?>
+                        </td>
+                        <td class="item-qty">
+                            <?= $block->escapeHtml(intval($_item->getQtyOrdered())) ?>
+                        </td>
+                        <td class="item-price">
+                            <?= $block->escapeHtml($priceHelper->currency($_item->getPrice(), true, false)) ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot class="order-totals">
+            <tr>
+                <td colspan="4">
+                    <?= $block->getChildHtml('order_totals') ?>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <?php if (
+        $this->helper(\Magento\GiftMessage\Helper\Message::class)
+        ->isMessagesAllowed('order', $_order, $_order->getStore())
+        && $_order->getGiftMessageId()
+    ) : ?>
+        <?php $_giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)
+            ->getGiftMessage($_order->getGiftMessageId()); ?>
+        <?php if ($_giftMessage) : ?>
+            <br />
+            <table class="message-gift">
+                <tr>
+                    <td>
+                        <h3><?= $block->escapeHtml(__('Gift Message for this Order')) ?></h3>
+                        <strong><?= $block->escapeHtml(__('From:')) ?></strong> <?= $block->escapeHtml($_giftMessage->getSender()) ?>
+                        <br /><strong><?= $block->escapeHtml(__('To:')) ?></strong> <?= $block->escapeHtml($_giftMessage->getRecipient()) ?>
+                        <br /><strong><?= $block->escapeHtml(__('Message:')) ?></strong>
+                        <br /><?= $block->escapeHtml($_giftMessage->getMessage()) ?>
+                    </td>
+                </tr>
+            </table>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

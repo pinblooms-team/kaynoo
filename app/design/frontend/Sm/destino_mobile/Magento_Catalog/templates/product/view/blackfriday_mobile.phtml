@@ -1,0 +1,19 @@
+<?php
+$_product = $block->getProduct();
+
+$orgprice        = $_product->getPrice();
+$specialprice    = $_product->getSpecialPrice();
+$specialfromdate = $_product->getSpecialFromDate();
+$specialtodate   = $_product->getSpecialToDate();
+$today           = time();
+
+if (!$specialprice)
+    $specialprice = $orgprice;
+
+if ($specialprice < $orgprice) {
+    if ((is_null($specialfromdate) && is_null($specialtodate)) || ($today >= strtotime($specialfromdate) && is_null($specialtodate)) || ($today <= strtotime($specialtodate) && is_null($specialfromdate)) || ($today >= strtotime($specialfromdate) && $today <= strtotime($specialtodate))) { ?>
+        <div class="product-detail-label sale-black-friday bf_pdp_page_mobile"><img src="<?= $this->getViewFileUrl('images/detail-friday-label.png'); ?>" alt="Black Friday" width="158" height="40" /></div>
+<?php
+    }
+}
+?>

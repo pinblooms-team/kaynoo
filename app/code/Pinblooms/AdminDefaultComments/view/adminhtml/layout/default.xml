@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <body>
+    <referenceContainer name="before.body.end">
+      <block class="Magento\Backend\Block\Template"
+             name="pinblooms_default_comments_global"
+             template="Pinblooms_AdminDefaultComments::defaultcomments.phtml">
+        <arguments>
+          <!-- Let the JS auto-detect scope; we’ll still pass 'order' as a default -->
+          <argument name="scope" xsi:type="string">order</argument>
+        </arguments>
+      </block>
+    </referenceContainer>
+  </body>
+</page>

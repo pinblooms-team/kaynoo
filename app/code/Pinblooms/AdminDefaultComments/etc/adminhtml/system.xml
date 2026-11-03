@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+  <system>
+    <section id="pinblooms_default_comments" translate="label" sortOrder="999" showInDefault="1" showInWebsite="1" showInStore="1">
+      <label>Default Admin Comments</label>
+      <tab>sales</tab>
+      <resource>Magento_Config::config</resource>
+      <group id="texts" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Prefilled Text</label>
+        <field id="order_text" type="textarea" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Order (Order → View → Comments)</label>
+        </field>
+        <field id="invoice_text" type="textarea" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Invoice (Create → Comments)</label>
+        </field>
+        <field id="shipment_text" type="textarea" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Shipment/Delivery (Create → Comments)</label>
+        </field>
+      </group>
+    </section>
+  </system>
+</config>

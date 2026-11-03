@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- INCLUDE JQUERY -->
+		<meta name="x_ua_compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+		<!-- INCLUDE CSS -->
+		<remove src="css/styles-l.css" />
+		<css src="css/styles-m.css"/>
+        <css src="css/print.css" media="print"/>
+
+		<script src="js/custom-mobile.js" />
+    </head>
+</page>

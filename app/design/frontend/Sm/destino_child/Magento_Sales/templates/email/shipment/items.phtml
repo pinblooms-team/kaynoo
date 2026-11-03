@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Framework\App\ObjectManager;
+?>
+<?php $_shipment = $block->getShipment() ?>
+<?php $_order    = $block->getOrder() ?>
+<?php if ($_shipment && $_order) : ?>
+    <table class="email-items">
+        <thead>
+            <tr>
+                <th class="item-image">
+                    <?= $block->escapeHtml(__('Image')) ?>
+                </th>
+                <th class="item-info">
+                    <?= $block->escapeHtml(__('Items')) ?>
+                </th>
+                <th class="item-qty">
+                    <?= $block->escapeHtml(__('Qty')) ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($_shipment->getAllItems() as $_item) : ?>
+                <?php if (!$_item->getOrderItem()->getParentItem()) : ?>
+                    <?php
+                    $objectManager = ObjectManager::getInstance();
+                    $productRepository = $objectManager->get(\Magento\Catalog\Model\ProductRepository::class);
+                    $_product = $productRepository->getById($_item->getProductId());
+                    $imageHelper = $objectManager->get(\Magento\Catalog\Helper\Image::class);
+                    $_imageUrl = $imageHelper->init($_product, 'product_small_image')->getUrl();
+                    ?>
+                    <tr>
+                        <td class="item-image">
+                            <img src="<?= $_imageUrl ?>" alt="<?= $block->escapeHtml($_item->getName()) ?>" width="110" height="110" />
+                        </td>
+                        <td class="item-info">
+                            <strong><?= $block->escapeHtml($_item->getName()) ?></strong><br />
+                            <?= $block->escapeHtml(__('ID: %1', $_item->getProductId())) ?>
+                        </td>
+                        <td class="item-qty">
+                            <?= $block->escapeHtml(intval($_item->getQty())) ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>

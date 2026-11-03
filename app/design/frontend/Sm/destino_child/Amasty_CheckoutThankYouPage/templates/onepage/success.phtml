@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+ * @package Amasty_CheckoutThankYouPage
+ */
+?>
+<?php
+/**
+ * @var $block Magento\Checkout\Block\Onepage\Success
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+<?php
+/** @var \Magento\Checkout\Model\Session $checkoutSession */
+$checkoutSession = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Checkout\Model\Session::class);
+$order = $checkoutSession->getLastRealOrder(); // Retrieve the last real order
+$totalAmount = $order->getGrandTotal(); // Get the order's grand total
+
+// Calculate the amount including the 1% fee
+$amountWithFee = round($totalAmount * 1.01);
+?>
+<div id="successpage">
+</div>
+<div class="checkout-success test2">
+    <?php if ($block->getOrderId()) : ?>
+        <div class="success-messages">
+            <?php if ($block->getCanViewOrder()) : ?>
+                <p><?= $escaper->escapeHtml(__('Your order number is:')) ?>
+                    <a href="<?= /* @noEscape */ $block->getViewOrderUrl() ?>" class="order-number">
+                        <strong>
+                            <?= /* @noEscape */ $block->getOrderId() ?>
+                        </strong>
+                    </a>
+                </p>
+            <?php else : ?>
+                <p>
+                    <?= $escaper->escapeHtml(__('Your order # is:')) ?>
+                    <span>
+                        <?= /* @noEscape */ $block->getOrderId() ?>
+                    </span>
+                </p>
+            <?php endif; ?>
+            <p><?= $escaper->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?></p>
+        </div>
+
+        <!-- Pay with Wave button -->
+        <div class="pay-with-wave-container">
+            <button type="button" class="action primary" id="custom-button">
+                <img src="https://kaynoo.sn/media/wysiwyg/wave-logo.png" alt="Wave Logo" class="wave-logo" />
+                <span>Payez avec Wave Ici</span>
+            </button>
+        </div>
+        <?= $block->getChildHtml('details') ?>
+    <?php endif; ?>
+
+    <?= $block->getAdditionalInfoHtml() ?>
+    <?= $block->getChildHtml('cms') ?>
+
+    <div class="actions-toolbar">
+        <!-- Pay with Wave button -->
+        <div class="pay-with-wave-container paybutton2">
+            <button type="button" class="action primary" id="custom-button2">
+                <img src="https://kaynoo.sn/media/wysiwyg/wave-logo.png" alt="Wave Logo" class="wave-logo" />
+                <span>Payer avec WAVE</span>
+            </button>
+        </div>
+        <div class="primary">
+            <a class="action primary continue" href="<?= /* @noEscape */ $block->getUrl() ?>">
+                <span><?= $escaper->escapeHtml(__('Continue Shopping')) ?></span>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        "use strict";
+        $(function() {
+            setTimeout(function() {
+                $('#successpage').css('display', 'none')
+            }, 4000);
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function redirectToWave() {
+        var amountWithFee = <?php echo $amountWithFee; ?>; // The amount including the 1% fee
+        var waveUrl = 'https://pay.wave.com/m/M_r_UjrChcJ9wN/c/sn/?amount=' + amountWithFee;
+        window.location.href = waveUrl;  // Redirect to Wave payment page
+    }
+
+    document.getElementById("custom-button").addEventListener("click", redirectToWave);
+    document.getElementById("custom-button2").addEventListener("click", redirectToWave);
+</script>

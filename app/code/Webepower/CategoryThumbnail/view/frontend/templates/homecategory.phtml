@@ -1,0 +1,38 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$collection = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Category\CollectionFactory')->create(); //get current category
+$collection->addAttributeToSelect('*')
+    ->addAttributeToFilter('level', array('eq' => 2));
+?>
+
+
+<div class="home-circle-categories category-slides">
+    <?php foreach ($collection as $category) :
+        if ($category->getIsActive()) {
+            $sub_category = $objectManager->create('Magento\Catalog\Model\Category')->load($category->getId());
+            $subcat_url = $category->getUrl();
+            $categorythumbnail = $sub_category->getData('category_thumbnail');
+            $string1 = " image"; ?>
+
+            <div class="circle-categories owl-item">
+                <div class="circle-category-info">
+                    <div class="category-image-container">
+                        <a class="circle-category" href="<?php echo $subcat_url;  ?>">
+                            <div class="category-image">
+                                <?php
+                                if ($categorythumbnail === NULL || $categorythumbnail === '') { ?>
+                                    <img src="/media/catalog/category/9.png" width="160" height="160" loading="lazy" alt="<?php echo $category->getName() . $string1 ?>">
+                                <?php  } else { ?>
+                                    <img src="<?php echo $categorythumbnail ?>" width="160" height="160" loading="lazy" alt="<?php echo $category->getName() . $string1 ?>">
+                                <?php } ?>
+                            </div>
+                            <div class="category-name">
+                                <span><?php echo $category->getName(); ?></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    <?php endforeach; ?>
+</div>

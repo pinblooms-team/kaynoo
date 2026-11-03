@@ -1,0 +1,19 @@
+<?php
+$_product = $block->getProduct();
+
+$urlInterface = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\UrlInterface');
+$_currentUrl = $urlInterface->getCurrentUrl();
+$number = '+221763213340';
+$message = "Bonjour, je suis intéressé(e) par ce produit, ";
+
+?>
+<div class="product-detail-label sale-livraison_express">
+    <?php if ($_product->getFeatured() == true) { ?>
+        <img src="<?= $this->getViewFileUrl('images/livraison_express-detail.png'); ?>" alt="Livraison Express" width="158" height="40" />
+    <?php } ?>
+    <a href="whatsapp://send?phone=<?= /* @noEscape */
+                                    $number ?>&amp;text=<?= /* @noEscape */
+                                                        $message, $_currentUrl ?>" target="_blank">
+        <img class="wchat" src="https://kaynoo.sn/media/whatsapp_chat_image/logo-whatsapp-png-pic-0.png" alt="WhatsApp Chat">
+    </a>
+</div>

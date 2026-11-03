@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="pinblooms" sortOrder="999" translate="label">
+            <label>Pinblooms</label>
+        </tab>
+        <section id="pinblooms_checkout_guard"
+                 translate="label"
+                 sortOrder="20"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+            <label>Checkout Guard</label>
+            <tab>pinblooms</tab>
+            <resource>Pinblooms_CheckoutGuard::config</resource>
+            <comment><![CDATA[GraphQL checkout protections for the PWA storefront. Logged-in customer checkout is not restricted by guest rules. Bot-pattern Payment Failed emails can be suppressed; real customer declines still send.]]></comment>
+
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Enable Checkout Guard</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Master switch. When No, all rules below are bypassed.</comment>
+                </field>
+                <field id="enable_logging"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Enable Logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Writes blocked attempts to var/log/checkout_guard.log. Does not affect Payment Failed emails.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="log_client_ip"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Log Client IP</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds client_ip and forwarded_for to blocked-attempt logs. Logging only — does not block customers.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/general/enable_logging">1</field>
+                    </depends>
+                </field>
+                <field id="log_user_agent"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Log Browser / User-Agent</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds user_agent (browser or bot client) to logs. Logging only.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/general/enable_logging">1</field>
+                    </depends>
+                </field>
+                <field id="log_geo"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="50"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Log Approximate Location</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds geo_country / geo_city from Cloudflare or proxy headers when available (not GPS). Logging only.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/general/enable_logging">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="guest_checkout" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Guest Checkout Policy</label>
+                <depends>
+                    <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                </depends>
+                <field id="enforce_magento_setting"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Enforce Magento Allow Guest Checkout Setting</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>When Magento Allow Guest Checkout is No, block guest setGuestEmailOnCart and guest placeOrder on GraphQL.</comment>
+                </field>
+            </group>
+
+            <group id="email" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Guest Email</label>
+                <depends>
+                    <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                </depends>
+                <field id="block_disposable_guest_email"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Block Disposable / Test Guest Emails</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Blocks @example.com and common disposable domains on guest GraphQL checkout.</comment>
+                </field>
+                <field id="extended_email_patterns"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Block Extended Bot Email Patterns</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Also blocks x@email.com, single-character local parts, and common bot local names.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/email/block_disposable_guest_email">1</field>
+                    </depends>
+                </field>
+                <field id="block_gmail_plus_addressing"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Block Gmail Plus Addressing</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Blocks guest emails like noreply.ss+123@gmail.com. Leave No if legitimate customers use Gmail plus aliases.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/email/block_disposable_guest_email">1</field>
+                    </depends>
+                </field>
+                <field id="extra_blocked_domains"
+                       translate="label comment"
+                       type="textarea"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Extra Blocked Email Domains</label>
+                    <comment>One domain per line or comma-separated. Example: email.com, tempmail.net</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/email/block_disposable_guest_email">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="address" translate="label" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Address Validation</label>
+                <depends>
+                    <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                </depends>
+                <field id="block_template_injection"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Block Template Injection in Addresses</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Blocks {{var}}, {{depend}}, {{block}}, and similar junk in billing/shipping GraphQL mutations and guest placeOrder.</comment>
+                </field>
+            </group>
+
+            <group id="checkmo" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Check / Money Order</label>
+                <depends>
+                    <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                </depends>
+                <field id="require_login_for_guests"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Require Sign-In for Guest Check / Money Order</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Guests must use credit card or sign in. Signed-in customers are not affected.</comment>
+                </field>
+            </group>
+
+            <group id="payment_failed_email" translate="label" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Payment Failed Email Filter</label>
+                <depends>
+                    <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                </depends>
+                <comment><![CDATA[Stops Magento "Payment Transaction Failed" admin emails for clear bot junk only. Real customer card declines (normal name/address and amount &gt; 0) still email you. Every skipped bot attempt is still written to var/log/checkout_guard.log with IP/UA/geo plus the address/email/totals they tried.]]></comment>
+                <field id="suppress_bot_emails"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Suppress Bot Payment Failed Emails</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Master switch for this filter. When Yes, matching bot quotes skip the admin email.</comment>
+                </field>
+                <field id="skip_template_address"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Skip If Address Has Template Markers</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Example: {{depend}}, {{var firstname}} in billing/shipping.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/payment_failed_email/suppress_bot_emails">1</field>
+                    </depends>
+                </field>
+                <field id="skip_zero_total"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Skip If Grand Total Is Zero</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Skips USD 0.00 failed-payment emails typical of bots.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/payment_failed_email/suppress_bot_emails">1</field>
+                    </depends>
+                </field>
+                <field id="skip_empty_guest_name"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Skip Empty Guest Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Skips guests with blank first and last name (e.g. Guest &lt;&gt;).</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/payment_failed_email/suppress_bot_emails">1</field>
+                    </depends>
+                </field>
+                <field id="skip_junk_guest_email"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="50"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Skip Junk Guest Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Skips @example.invalid, disposable domains, and other bot emails (same rules as Guest Email blocking).</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/payment_failed_email/suppress_bot_emails">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="custom_option_file" translate="label" sortOrder="38" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Option File Uploads</label>
+                <depends>
+                    <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                </depends>
+                <comment><![CDATA[Blocks storefront/REST/API bots from writing files into pub/media/custom_options. Does NOT affect Admin product create/edit or catalog. Adminhtml is always skipped.]]></comment>
+                <field id="block_uploads"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Block All Custom Option File Uploads</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Yes = block hacker/API uploads only. Admin can still create and edit products normally.</comment>
+                </field>
+            </group>
+
+            <group id="rate_limit" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Rate Limit</label>
+                <depends>
+                    <field id="pinblooms_checkout_guard/general/enabled">1</field>
+                </depends>
+                <comment><![CDATA[Slows bot hammering on GraphQL checkout. Default 25 attempts / IP / minute is safe for real customers.]]></comment>
+                <field id="enabled"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Enable Rate Limit</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Limits checkout GraphQL attempts per IP (and per cart). Real shoppers rarely exceed the default.</comment>
+                </field>
+                <field id="max_attempts"
+                       translate="label comment"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Max Attempts Per IP</label>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                    <comment>Default 25 per time window. Bots in your logs hit ~60/minute.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/rate_limit/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="window_seconds"
+                       translate="label comment"
+                       type="text"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Time Window (Seconds)</label>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                    <comment>Default 60 seconds.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/rate_limit/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="max_attempts_per_cart"
+                       translate="label comment"
+                       type="text"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Max Attempts Per Cart</label>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                    <comment>Default 40 per time window. Extra protection when one cart is hammered.</comment>
+                    <depends>
+                        <field id="pinblooms_checkout_guard/rate_limit/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

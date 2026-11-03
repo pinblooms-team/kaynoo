@@ -1,0 +1,23 @@
+<?php
+/*------------------------------------------------------------------------
+# SM Categories Menu - Version 1.0.0
+# Copyright (c) 2016 YouTech Company. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: YouTech Company
+# Websites: http://www.magentech.com
+-------------------------------------------------------------------------*/
+
+$list = $this->_getList();
+if (!empty($list)) { ?>
+    <div id="<?php echo $this->_tagId(); ?>" class="block-menu">
+		
+		<div class="block-title">
+			<em class="fa fa-bars"></em>
+			<span><?php echo $this->_getConfig('title_module'); ?></span>
+		</div>
+		<div class="block-content">
+			<?php echo $list; ?>
+		</div>
+	</div>
+	<?php
+} ?>

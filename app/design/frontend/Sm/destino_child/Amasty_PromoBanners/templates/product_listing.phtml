@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2023 Amasty (https://www.amasty.com)
+ * @package Promo Banners Base for Magento 2
+ */
+/**
+ * @var $block \Amasty\PromoBanners\Block\Banner\ProductListing
+ * @var $escaper \Magento\Framework\Escaper
+ */
+?>
+
+<?php
+$products = $block->getData('products');
+$catalogHelper = $this->helper(\Magento\Catalog\Helper\Output::class);
+$listingBlock = $block->getProductListingBlock();
+
+?>
+<div class="block">
+    <div class="products wrapper grid products-grid amasty-banners">
+        <ol class="products list items product-items amasty-banner-items">
+            <?php /** @var \Magento\Catalog\Model\Product $product */
+            foreach ($products as $product) : ?>
+                <li class="item product product-item">
+                    <div class="product-item-info">
+                        <a href="<?= $escaper->escapeUrl($product->getProductUrl()) ?>" title="<?= $escaper->escapeHtml($product->getName()) ?>" class="product-image"></a>
+                        <?php $productImage = $listingBlock->getImage($product, 'category_page_grid'); ?>
+                        <a href="<?= $escaper->escapeUrl($product->getProductUrl()) ?>" class="product photo product-item-photo" tabindex="-1">
+                            <?= $productImage->toHtml() ?>
+                        </a>
+                        <div class="product details product-item-details">
+                            <?php
+                            $_productNameStripped = $block->stripTags($product->getName(), null, true);
+                            $productName = $catalogHelper->productAttribute($product, $product->getName(), 'name');
+                            $len = strlen($productName);
+                            ?>
+                            <strong class="product name product-item-nam">
+                                <a class="product-item-link" href="<?= $escaper->escapeHtml($product->getProductUrl()) ?>">
+                                    <?php echo substr($productName, 0, 50); ?>
+                                    <?php if ($len > 50) echo '...'; ?>
+                                </a>
+                            </strong>
+                            <div class="price-box test">
+                                <?= $listingBlock->getProductPrice($product) ?>
+                            </div>
+
+                            <div class="product-item-inner">
+                                <div class="product actions product-item-actions">
+                                    <div class="actions-primary">
+                                        <?php if ($product->isSaleable()) : ?>
+                                            <?php $postParams = $listingBlock->getAddToCartPostParams($product); ?>
+                                            <form data-role="amasty-banner-tocart-form" action="<?= $escaper->escapeHtml($postParams['action']) ?>" method="post">
+                                                <input type="hidden" name="product" value="<?= $escaper->escapeHtml($postParams['data']['product']) ?>">
+                                                <input type="hidden" name="uenc" value="<?= $escaper->escapeHtml($postParams['data']['uenc']) ?>">
+                                                <input name="form_key" type="hidden" value="<?= $escaper->escapeHtml($block->getFormKey()) ?>">
+                                                <button type="submit" title="<?= $escaper->escapeHtml(__('Add to Cart')) ?>" class="action tocart primary">
+                                                    <span><?= $escaper->escapeHtml(__('Add to Cart')) ?></span>
+                                                </button>
+                                            </form>
+                                        <?php else : ?>
+                                            <?php if ($product->getIsSalable()) : ?>
+                                                <div class="stock available">
+                                                    <span><?= $escaper->escapeHtml(__('In stock')) ?></span>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="stock unavailable">
+                                                    <span><?= $escaper->escapeHtml(__('Out of stock')) ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+</div>
+<?php if (!$listingBlock->isRedirectToCartEnabled()) : ?>
+    <script type="text/x-magento-init">
+        {
+        "[data-role=amasty-banner-tocart-form], .form.map.checkout": {
+            "catalogAddToCart": {}
+        }
+    }
+    </script>
+<?php endif; ?>

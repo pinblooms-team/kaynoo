@@ -1,6 +1,5 @@
-# Magento 2 project
-# Based on https://github.com/magento/magento2/blob/2.4-develop/.gitignore
-# app/etc/config.php is kept so module configuration can be committed.
+# Magento 2 project (composer install restores core files)
+# app/etc/config.php stays tracked so the enabled-module list can be committed.
 # app/etc/env.php stays ignored because it holds database credentials.
 
 # IDE and OS
@@ -16,7 +15,7 @@ atlassian*
 .DS_Store
 Thumbs.db
 
-# Local secrets and environment
+# Secrets
 /auth.json
 /app/etc/env.php
 *.pem
@@ -29,60 +28,45 @@ Thumbs.db
 /*.tar
 /*.tar.gz
 /*.tgz
+*.rej
 
-# Generated and cached Magento paths
-/generated/*
-!/generated/.htaccess
-/var/*
-!/var/.htaccess
-/vendor/*
-!/vendor/.htaccess
-/dev/tests/integration/tmp/*
-/dev/tests/integration/sandbox/*
-/dev/tests/acceptance/tests/_output/*
-/dev/tests/acceptance/.composer/*
-/phpserver/router.php
+# Restored by composer install (magento-composer-installer)
+/bin/
+/dev/
+/lib/
+/setup/
+/phpserver/
+/update/
+/vendor/
 
-# Static assets and media (keep access rules)
-/pub/robots.txt
-/pub/sitemap
-/pub/sitemap.xml
-/pub/static/*
+# Generated at runtime
+/generated/
+/var/
+
+# Published files, uploads, and local tools
+/pub/static/**
 !/pub/static/.htaccess
-/pub/media/*.*
+/pub/media/**
 !/pub/media/.htaccess
-/pub/media/attribute/*
-!/pub/media/attribute/.htaccess
-/pub/media/analytics/*
-/pub/media/catalog/*
-!/pub/media/catalog/.htaccess
-/pub/media/customer/*
-!/pub/media/customer/.htaccess
-/pub/media/downloadable/*
-!/pub/media/downloadable/.htaccess
-/pub/media/favicon/*
-/pub/media/import/*
-!/pub/media/import/.htaccess
-/pub/media/logo/*
-/pub/media/custom_options/*
-!/pub/media/custom_options/.htaccess
-/pub/media/theme/*
-/pub/media/theme_customization/*
-!/pub/media/theme_customization/.htaccess
-/pub/media/wysiwyg/*
-!/pub/media/wysiwyg/.htaccess
-/pub/media/tmp/*
-!/pub/media/tmp/.htaccess
-/pub/media/captcha/*
-/pub/media/sitemap/*
-!/pub/media/sitemap/.htaccess
+/pub/opt/
+/pub/pma_db/
+/pub/robots.txt
+/pub/*sitemap*
+/robots.txt
+/sitemap
+/sitemap.xml
 
-# Frontend build tooling
+# Local helpers and stock server sample (not used by Magento itself)
+/mutagen.sh
+/permit.sh
+/nginx.conf
+/package.json
+/package-lock.json
+
+# Frontend tooling
 /node_modules
 /.grunt
 /Gruntfile.js
-/package.json
-/package-lock.json
 /grunt-config.json
 
 # PHP tooling caches
@@ -92,19 +76,5 @@ Thumbs.db
 /.php-cs-fixer.cache
 /.phpunit.result.cache
 /phpunit.xml
-
-# Other local files from the Magento core ignore list
-/robots.txt
-/sitemap
-/sitemap.xml
-/.gitattributes
 /app/config_sandbox
 /app/code/Magento/TestModule*
-/lib/internal/flex/uploader/.actionScriptProperties
-/lib/internal/flex/uploader/.flexProperties
-/lib/internal/flex/uploader/.project
-/lib/internal/flex/uploader/.settings
-/lib/internal/flex/varien/.actionScriptProperties
-/lib/internal/flex/varien/.flexLibProperties
-/lib/internal/flex/varien/.project
-/lib/internal/flex/varien/.settings

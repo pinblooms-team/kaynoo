@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright © 2016 Magentech. All rights reserved.
+ */
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see \Sm\Megamenu2\Block\Topmenu
+ */
+?>
+<?php
+    $_helper = $this->helper('Sm\Megamenu2\Helper\Data');
+    $_config = $_helper->getConfig('megamenu2');
+    $columnsLimit = 0;
+    if($_config['general']['enable']) {
+?>
+<?php $_menu = $block->getMegamenu2Html(); ?>
+<nav class="navigation sm-megamenu2" role="navigation">
+    <ul>
+		<li class="level0 home-item">
+			<a class="level-top" href="<?php echo $this->getUrl('')?>">
+				<span><?php echo __('Home')?></span>
+			</a>
+		</li>
+        <?php echo $_menu; ?>
+    </ul>
+</nav>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'megamenu'
+    ], function ($,smMegamenu2) {
+        $(".sm-megamenu2").smMegamenu2();
+    });
+</script>
+<?php
+    } else {
+?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit); ?>
+
+<nav class="navigation sm-megamenu2" role="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+		<li class="level0 home-item">
+			<a class="level-top" href="<?php echo $this->getUrl('')?>">
+				<span><?php echo __('Home')?></span>
+			</a>
+		</li>
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+    </ul>
+</nav>
+
+<?php
+    }
+?>

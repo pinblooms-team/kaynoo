@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ForaStudio Private Limited.
+ *
+ * @category  ForaStudio
+ * @package   ForaStudio_TrashManager
+ * @author    ForaStudio
+ * @copyright Copyright (c) 2018-2019 ForaStudio Private Limited (https://forastudio.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="ForaStudio_TrashManager::trashmanager" title="TrashManager" translate="title" sortOrder="200">
+                    <resource id="ForaStudio_TrashManager::category" title="Category" translate="title" sortOrder="10"/>
+                    <resource id="ForaStudio_TrashManager::product" title="Product" translate="title" sortOrder="20"/>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="ForaStudio_TrashManager::config_trashmanager" title="Trash Manager Settings"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

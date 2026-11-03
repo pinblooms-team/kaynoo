@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp/etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="default-src">
+            <values>
+                <value id="static" type="host">https://static.kaynoo.sn</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="data-image" type="host">'self' blob: data:</value>
+                <value id="baseuri" type="host">https://static.kaynoo.sn</value>
+                <value id="w-img" type="host">https://kaynoo.sn/media/whatsapp_chat_image/logo-whatsapp-png-pic-0.png</value>
+                <value id="cloudfront" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                <value id="v2assets-zopim" type="host">https://v2assets.zopim.io</value>
+                <value id="gif-zopim" type="host">https://v2.zopim.com/widget/images/loadingbar.gif</value>
+                <value id="googlecom" type="host">https://www.google.com</value>
+                <value id="googlecoin" type="host">https://www.google.co.in</value>
+                <value id="img-static" type="host">https://static.kaynoo.sn</value>
+                <value id="gtm-img" type="host">https://www.googletagmanager.com</value>
+            </values>
+        </policy>
+        <policy id="media-src">
+            <values>
+                <value id="zdassets-mp3" type="host">https://static.zdassets.com</value>
+            </values>
+        </policy>
+        <policy id="script-src">
+            <values>
+                <value id="health" type="host">https://www.dreams.ie/health.js</value>
+                <value id="zopim-widget" type="host">https://widget-mediator.zopim.com</value>
+                <value id="cdn.chaty" type="host">https://cdn.chaty.app</value>
+                <value id="cloudfront-cdn" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                <value id="z-moatads" type="host">https://z.moatads.com</value>
+                <value id="v2-zopim" type="host">https://v2.zopim.com</value>
+                <value id="m-addthis" type="host">https://m.addthis.com</value>
+                <value id="v1-addthis" type="host">https://v1.addthisedge.com</value>
+                <value id="zdassets" type="host">https://static.zdassets.com</value>
+                <value id="widget-mediator" type="host">wss://widget-mediator.zopim.com</value>
+                <value id="api-public" type="host">https://api-public.addthis.com</value>
+                <value id="s7-addthis" type="host">https://s7.addthis.com</value>
+                <value id="s7-addthis2" type="host">http://s7.addthis.com</value>
+                <value id="script-static" type="host">https://static.kaynoo.sn</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="zendesk" type="host">https://souleyendao.zendesk.com</value>
+                <value id="pixel-chaty" type="host">https://pixel.chaty.app</value>
+                <value id="cloudfront" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                <value id="s7-addthis" type="host">https://s7.addthis.com</value>
+                <value id="doubleclick" type="host">https://stats.g.doubleclick.net</value>
+                <value id="widget-mediator" type="host">wss://widget-mediator.zopim.com</value>
+                <value id="widget-facebook" type="host">https://www.facebook.com</value>
+                <value id="connect-static" type="host">https://static.kaynoo.sn</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="doubleclick" type="host">https://td.doubleclick.net</value>
+                <value id="s7-addthis" type="host">https://s7.addthis.com</value>
+                <value id="amc" type="host">https://amc.demdex.net</value>
+                <value id="cloudfront" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                <value id="frame-static" type="host">https://static.kaynoo.sn</value>
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="zopim" type="host">https://v2.zopim.com</value>
+                <value id="cloudfront" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                <value id="woff2Font" type="host">https://dvsj0t2reg19q.cloudfront.net/static/adminhtml/Local/backend-custom/en_US/fonts/opensans/regular/opensans-400.woff2</value>
+                <value id="font-static" type="host">https://static.kaynoo.sn</value>
+            </values>
+        </policy>
+            <policy id="style-src">
+            <values>
+                 <value id="cloudfront-cdn" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                 <value id="static" type="host">https://static.kaynoo.sn</value>
+                 <value id="style-chaty" type="host">https://cdn.chaty.app</value>
+            </values>
+        </policy>
+        <policy id="form-action">
+            <values>
+                <value id="cloudfront-cdn" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                <value id="form-static" type="host">https://static.kaynoo.sn</value>
+            </values>
+        </policy>
+
+        <policy id="object-src">
+            <values>
+                <value id="cloudfront-cdn" type="host">https://dvsj0t2reg19q.cloudfront.net</value>
+                <value id="object-static" type="host">https://static.kaynoo.sn</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>
