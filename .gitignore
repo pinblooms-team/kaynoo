@@ -1,0 +1,110 @@
+# Magento 2 project
+# Based on https://github.com/magento/magento2/blob/2.4-develop/.gitignore
+# app/etc/config.php is kept so module configuration can be committed.
+# app/etc/env.php stays ignored because it holds database credentials.
+
+# IDE and OS
+/.buildpath
+/.cache
+/.metadata
+/.project
+/.settings
+/.vscode
+/.idea
+atlassian*
+/nbproject
+.DS_Store
+Thumbs.db
+
+# Local secrets and environment
+/auth.json
+/app/etc/env.php
+*.pem
+*.key
+
+# Database dumps and archives anywhere in the project
+*.sql
+*.sql.gz
+*.zip
+/*.tar
+/*.tar.gz
+/*.tgz
+
+# Generated and cached Magento paths
+/generated/*
+!/generated/.htaccess
+/var/*
+!/var/.htaccess
+/vendor/*
+!/vendor/.htaccess
+/dev/tests/integration/tmp/*
+/dev/tests/integration/sandbox/*
+/dev/tests/acceptance/tests/_output/*
+/dev/tests/acceptance/.composer/*
+/phpserver/router.php
+
+# Static assets and media (keep access rules)
+/pub/robots.txt
+/pub/sitemap
+/pub/sitemap.xml
+/pub/static/*
+!/pub/static/.htaccess
+/pub/media/*.*
+!/pub/media/.htaccess
+/pub/media/attribute/*
+!/pub/media/attribute/.htaccess
+/pub/media/analytics/*
+/pub/media/catalog/*
+!/pub/media/catalog/.htaccess
+/pub/media/customer/*
+!/pub/media/customer/.htaccess
+/pub/media/downloadable/*
+!/pub/media/downloadable/.htaccess
+/pub/media/favicon/*
+/pub/media/import/*
+!/pub/media/import/.htaccess
+/pub/media/logo/*
+/pub/media/custom_options/*
+!/pub/media/custom_options/.htaccess
+/pub/media/theme/*
+/pub/media/theme_customization/*
+!/pub/media/theme_customization/.htaccess
+/pub/media/wysiwyg/*
+!/pub/media/wysiwyg/.htaccess
+/pub/media/tmp/*
+!/pub/media/tmp/.htaccess
+/pub/media/captcha/*
+/pub/media/sitemap/*
+!/pub/media/sitemap/.htaccess
+
+# Frontend build tooling
+/node_modules
+/.grunt
+/Gruntfile.js
+/package.json
+/package-lock.json
+/grunt-config.json
+
+# PHP tooling caches
+/.php_cs
+/.php_cs.cache
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/phpunit.xml
+
+# Other local files from the Magento core ignore list
+/robots.txt
+/sitemap
+/sitemap.xml
+/.gitattributes
+/app/config_sandbox
+/app/code/Magento/TestModule*
+/lib/internal/flex/uploader/.actionScriptProperties
+/lib/internal/flex/uploader/.flexProperties
+/lib/internal/flex/uploader/.project
+/lib/internal/flex/uploader/.settings
+/lib/internal/flex/varien/.actionScriptProperties
+/lib/internal/flex/varien/.flexLibProperties
+/lib/internal/flex/varien/.project
+/lib/internal/flex/varien/.settings
