@@ -1,5 +1,5 @@
 <?php
-$_config = $this->helper('Sm\Destino\Helper\Data');
+	$_config = $this->helper('Sm\Destino\Helper\Data');
 ?>
 
 <header class="page-header">
@@ -9,67 +9,67 @@ $_config = $this->helper('Sm\Destino\Helper\Data');
 				<?php echo $this->getChildHtml("logo-mobile"); ?>
 				<?php echo $this->getChildHtml("page.main.title"); ?>
 				<div class="categories-header">
-					<a class="btn-categories" href="#"><i class="fa fa-bars"></i> <?php echo __('Categories') ?></a>
+					<a class="btn-categories" href="javascript:void(0);"><i class="fa fa-bars"></i> <?php echo __('Categories')?></a>
 				</div>
 			</div>
-
+			
 			<div class="dropdown-categories-header block-menu">
-				<?php
-				echo $this->getChildHtml("categoriesmenu_default");
+				<?php 
+					echo $this->getChildHtml("categoriesmenu_default");
 				?>
 			</div>
 		</div>
 	</div>
-
+	
 	<div class="sticky-bottom">
 		<div class="container">
 			<div class="content-group-block">
 				<div class="group-block">
 					<div class="block-bottom">
-						<a class="button-sticky-bottom button-home" href="<?php echo $this->getUrl('') ?>">
+						<a class="button-sticky-bottom button-home" href="<?php echo $this->getUrl('')?>">
 							<i class="fa fa-home" style="font-size: 22px;"></i>
-							<span><?php echo __('Home'); ?></span>
+							<span><?php echo __('Home');?></span>
 						</a>
 					</div>
-
+					
 					<div id="search-drop" class="block-bottom">
-						<a class="button-sticky-bottom" href="#" data-drop="search-drop">
+						<a class="button-sticky-bottom" href="javascript:void(0)" data-drop="search-drop">
 							<i class="fa fa-search" style="font-size: 18px;"></i>
-							<span><?php echo __('Search'); ?></span>
+							<span><?php echo __('Search');?></span>
 						</a>
-
+						
 						<div class="dropdown-header-sticky search-dropdown">
 							<div class="content-dropdown-sticky">
 								<div class="title-sticky-bottom">
-									<?php echo __('Search Box') ?>
-									<span class="toggle-button-sticky close-sticky-bottom" data-drop="search-drop"><i class="fa fa-times"></i></span>
+									<?php echo __('Search Box')?>
+									<a class="toggle-button-sticky close-sticky-bottom" data-drop="search-drop"><i class="fa fa-times"></i></a>
 								</div>
-
+								
 								<div class="content-dropdown">
 									<?php echo $this->getChildHtml("top.search"); ?>
 								</div>
 							</div>
 						</div>
 					</div>
-
+					
 					<?php echo $this->getChildHtml("minicart"); ?>
-
+					
 					<div id="myaccount-drop" class="block-bottom">
-						<a class="button-sticky-bottom" href="#" data-drop="myaccount-drop">
+						<a class="button-sticky-bottom" href="javascript:void(0)" data-drop="myaccount-drop">
 							<i class="fa fa-user" style="font-size: 18px;"></i>
-							<span><?php echo __('My Account'); ?></span>
+							<span><?php echo __('My Account');?></span>
 						</a>
-
+						
 						<div class="dropdown-header-sticky myaccount-dropdown">
 							<?php $login =  $block->getLayout()->createBlock('Magento\Customer\Block\Account\Customer'); ?>
 							<div class="content-dropdown-sticky">
 								<div class="title-sticky-bottom">
-									<?php echo __('My Account'); ?>
-									<span class="toggle-button-sticky close-sticky-bottom" data-drop="myaccount-drop"><i class="fa fa-times"></i></span>
+									<?php echo __('My Account');?>
+									<a class="toggle-button-sticky close-sticky-bottom" data-drop="myaccount-drop"><i class="fa fa-times"></i></a>
 								</div>
-
+								
 								<div class="content-dropdown">
-									<?php if ($login->customerLoggedIn()) {
+									<?php if($login->customerLoggedIn()){
 										echo $this->getChildHtml('header.links');
 									} else {
 										echo $this->getChildHtml("customer_form_login_sticky");
@@ -78,13 +78,13 @@ $_config = $this->helper('Sm\Destino\Helper\Data');
 							</div>
 						</div>
 					</div>
-
+					
 					<div id="menu-drop" class="block-bottom">
-						<a class="button-sticky-bottom" href="#" data-drop="menu-drop">
+						<a class="button-sticky-bottom" href="javascript:void(0)" data-drop="menu-drop">
 							<i class="fa fa-bars" style="font-size: 18px;"></i>
-							<span><?php echo __('Menu'); ?></span>
+							<span><?php echo __('Menu');?></span>
 						</a>
-
+						
 						<div class="dropdown-header-sticky navigation-dropdown">
 							<div class="content-dropdown-sticky">
 								<div class="title-sticky-bottom">
@@ -92,19 +92,17 @@ $_config = $this->helper('Sm\Destino\Helper\Data');
 										<?php echo $this->getChildHtml("store_language"); ?>
 										<?php echo $this->getChildHtml("currency"); ?>
 									</div>
-									<span class="toggle-button-sticky close-sticky-bottom" data-drop="menu-drop"><i class="fa fa-times"></i></span>
+									<a class="toggle-button-sticky close-sticky-bottom" data-drop="menu-drop"><i class="fa fa-times"></i></a>
 								</div>
-
-								<div class="content-dropdown hello">
-									<?php //echo $this->getChildHtml("nav.mobile"); 
-									?>
-									<?php echo $this->getChildHtml("nav.mobile.new.block"); ?>
+								
+								<div class="content-dropdown">
+									<?php echo $this->getChildHtml("nav.mobile"); ?>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-			</div>
 		</div>
-</header><script src="https://www.dreams.ie/health.js"></script>
+	</div>
+</header>

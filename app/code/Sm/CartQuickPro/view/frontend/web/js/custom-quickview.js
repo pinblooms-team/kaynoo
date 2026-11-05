@@ -89,6 +89,28 @@ define(['jquery',
 				}, 500);	
 			},
 			
+			QuickView.prototype.setHeightQuickview = function(ifr) {
+				var _self = this , 
+					_time = 0 , 
+					_ifr = document.getElementById('smcqp-iframe');
+				if (typeof ifr === 'undefined' || ifr === null || typeof _ifr === 'undefined' || _ifr === null) return;
+					var ifr_height = _ifr.getAttribute('height'),
+						_content = _ifr.contentWindow;
+					if (typeof _content === 'undefined' || _content === null || _content.document.body === null) return;	
+					var _content_temp = $(_content.document.body).height();
+					if (typeof _content_temp !== 'undefined') {
+						$('.gallery-placeholder',$(_content.document.body)).trigger('contentUpdate');
+						if (ifr.height() !== _content_temp){
+							ifr.height(_content_temp);
+						}
+					}
+				if (_time == 'undefined') _time = 0;
+				clearTimeout(_time);
+				_time = setTimeout(function() {
+					_self.setHeightIframe(ifr);
+				}, 500);	
+			},
+			
 			QuickView.prototype.requestQuickView = function() {
 				var _self = this ;
 				var _handler = $('.quickview-handler');
@@ -97,20 +119,26 @@ define(['jquery',
 						e.preventDefault();
 						$('#smcqp-container').customModal("openModal");
 						var self = $(this), _link = self.attr('href');
+						$(".modal-content").css("overflow-y", "hidden");
+						$("#smcqp-contents").css("visibility", "hidden");
+						$("#smcqp-contents").show();
 						var ifr=$('<iframe/>', {
 							id:'smcqp-iframe',
 							src:_link+"/randtime/" + new Date().getTime(),
 							scrolling: 'no',
 							frameborder:0,
 							width:'100%',
-							height:'300px',
-							load:function(){
-								$("#smcqp-container .loading-mask").hide();
-								$(".smcqp-modal-popup .modal-inner-wrap").removeClass("smcqp-loading");
-								$("#smcqp-contents").show();
-								_self.setHeightIframe(ifr);
-							}
+							height:'100%'
 						});
+						
+						ifr.on('load', function(){
+							$("#smcqp-container .loading-mask").hide();
+							$(".smcqp-modal-popup .modal-inner-wrap").removeClass("smcqp-loading");
+							$(".modal-content").css("overflow-y", "auto");
+							$("#smcqp-contents").css("visibility", "visible");
+							_self.setHeightIframe(ifr);
+						})
+						
 						$('#smcqp-contents').append(ifr);
 					});
 				}

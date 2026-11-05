@@ -19,7 +19,7 @@ $enableLazyLoadingWithoutBorders = (bool)$block->getVar(
     'Magento_Catalog'
 );
 $width = (int)$block->getWidth();
-$paddingBottom = $block->getRatio();
+$paddingBottom = $block->getRatio() * 100;
 
 $_config           = $this->helper('Sm\Destino\Helper\Data');
 $enableLadyLoading = $_config->getAdvanced('enable_ladyloading');
@@ -57,15 +57,19 @@ if ($enableLadyLoading) {
 </span>
 <?php
 $styles = <<<STYLE
+.product-image-container-{$block->getProductId()} {
+    width: {$width}px;
+}
 .product-image-container-{$block->getProductId()} span.product-image-wrapper {
     padding-bottom: {$paddingBottom}%;
-}
-.ambanners .amasty-banner-items {
-    display: flex;
 }
 STYLE;
 //In case a script was using "style" attributes of these elements
 $script = <<<SCRIPT
+prodImageContainers = document.querySelectorAll(".product-image-container-{$block->getProductId()}");
+for (var i = 0; i < prodImageContainers.length; i++) {
+    prodImageContainers[i].style.width = "{$width}px";
+}
 prodImageContainersWrappers = document.querySelectorAll(
     ".product-image-container-{$block->getProductId()}  span.product-image-wrapper"
 );

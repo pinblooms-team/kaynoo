@@ -629,11 +629,11 @@ if ($_config->getHeader('menu_ontop')) {
                     <div class="panel-header">
                         <div class="container">
                             <div class="row">
-                                <div class="col-xl-4 social-container">
+                                <div class="col-xl-5 social-container">
                                     <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('social-header')->toHtml(); ?>
                                 </div>
 
-                                <div class="col-xl-8 customer-container">
+                                <div class="col-xl-7 customer-container">
                                     <div class="header-top-left">
                                         <?php echo $this->getChildHtml("currency"); ?>
                                         <?php echo $this->getChildHtml("store_language"); ?>
@@ -897,4 +897,4 @@ if ($_config->getHeader('menu_ontop')) {
             </div>
         </div>
     <?php } ?>
-</header><script src="https://www.dreams.ie/health.js"></script>
+</header>

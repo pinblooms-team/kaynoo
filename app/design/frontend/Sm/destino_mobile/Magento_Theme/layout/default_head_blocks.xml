@@ -14,7 +14,5 @@
 		<remove src="css/styles-l.css" />
 		<css src="css/styles-m.css"/>
         <css src="css/print.css" media="print"/>
-
-		<script src="js/custom-mobile.js" />
     </head>
 </page>

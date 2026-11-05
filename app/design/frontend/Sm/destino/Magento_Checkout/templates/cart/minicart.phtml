@@ -77,7 +77,7 @@ $priceEmpty    = $priceHelper->currency($value, true, false);
         </div>
     <?php endif ?>
     <script>
-        window.checkout = <?php /* @noEscape */ echo json_encode($block->getConfig()); ?>;
+        window.checkout = <?= /* @escapeNotVerified */ $block->getSerializedConfig() ?>;
     </script>
     <script type="text/x-magento-init">
     {
