@@ -680,7 +680,7 @@ class MobileDetect extends \Magento\Framework\App\Helper\AbstractHelper
 	public function __construct(
 		StoreManagerInterface $storeManagerInterface,
         \Magento\Framework\App\Helper\Context $context,
-		 array $headers = null,
+		 ?array $headers = null,
 		 $userAgent = null
     ) {
 		$this->_storeManager = $storeManagerInterface;

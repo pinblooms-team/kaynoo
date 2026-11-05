@@ -48,7 +48,7 @@ class Remove extends \Magento\Wishlist\Controller\AbstractIndex
         Action\Context $context,
         WishlistProviderInterface $wishlistProvider,
         Validator $formKeyValidator,
-        AttributeValueProvider $attributeValueProvider = null
+        ?AttributeValueProvider $attributeValueProvider = null
     ) {
         $this->wishlistProvider = $wishlistProvider;
         $this->formKeyValidator = $formKeyValidator;

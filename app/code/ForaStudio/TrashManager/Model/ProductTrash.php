@@ -75,9 +75,9 @@ class ProductTrash extends AbstractModel {
 	 * @param \Magento\Framework\App\Filesystem\DirectoryList 							$directoryList
 	 * @param \Magento\Indexer\Model\Indexer\CollectionFactory 							$indexerFactory
 	 * @param \Magento\Catalog\Model\Product 											$productModel
-	 * @param \ForaStudio\TrashManager\Model\ResourceModel\ProductTrash|null            $resource
-	 * @param \ForaStudio\TrashManager\Model\ResourceModel\ProductTrash\Collection|null $collection
 	 * @param \Magento\Framework\Message\ManagerInterface 								$messageManager
+	 * @param \ForaStudio\TrashManager\Model\ResourceModel\ProductTrash                  $resource
+	 * @param \ForaStudio\TrashManager\Model\ResourceModel\ProductTrash\Collection       $collection
 	 * @param array                                                                		$data
 	 */
 	public function __construct(
@@ -88,9 +88,9 @@ class ProductTrash extends AbstractModel {
 		\Magento\Framework\App\Filesystem\DirectoryList $directoryList,
 		\Magento\Indexer\Model\Indexer\CollectionFactory $indexerFactory,
 		\Magento\Catalog\Model\Product $productModel,
-		\ForaStudio\TrashManager\Model\ResourceModel\ProductTrash $resource = null,
-		\ForaStudio\TrashManager\Model\ResourceModel\ProductTrash\Collection $collection = null,
 		\Magento\Framework\Message\ManagerInterface $messageManager,
+		\ForaStudio\TrashManager\Model\ResourceModel\ProductTrash $resource,
+		\ForaStudio\TrashManager\Model\ResourceModel\ProductTrash\Collection $collection,
 		array $data = []
 	) {
 		$this->connection = $resourceConnection->getConnection();

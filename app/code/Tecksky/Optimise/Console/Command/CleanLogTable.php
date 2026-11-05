@@ -44,13 +44,15 @@ class CleanLogTable extends Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $this->database->truncateLogTable();
             $output->writeln("<info>Table log successfully cleared.</info>");
+            return \Symfony\Component\Console\Command\Command::SUCCESS;
         } catch (\Exception $exception) {
             $output->writeln("<error>{$exception->getMessage()}</error>");
+            return \Symfony\Component\Console\Command\Command::FAILURE;
         }
     }
 }

@@ -91,7 +91,7 @@ class GenerateCommand extends Command
         parent::configure();
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $this->state->setAreaCode(\Magento\Framework\App\Area::AREA_ADMINHTML);
@@ -115,6 +115,6 @@ class GenerateCommand extends Command
         } catch (\Throwable $e) {
             throw $e;
         }
-        return 0;
+        return \Symfony\Component\Console\Command\Command::SUCCESS;
     }
 }

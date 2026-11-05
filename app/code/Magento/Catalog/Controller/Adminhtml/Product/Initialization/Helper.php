@@ -117,11 +117,11 @@ class Helper
         \Magento\Catalog\Model\Product\Initialization\Helper\ProductLinks $productLinks,
         \Magento\Backend\Helper\Js $jsHelper,
         \Magento\Framework\Stdlib\DateTime\Filter\Date $dateFilter,
-        CustomOptionFactory $customOptionFactory = null,
-        ProductLinkFactory $productLinkFactory = null,
-        ProductRepositoryInterface $productRepository = null,
-        LinkTypeProvider $linkTypeProvider = null,
-        AttributeFilter $attributeFilter = null
+        ?CustomOptionFactory $customOptionFactory = null,
+        ?ProductLinkFactory $productLinkFactory = null,
+        ?ProductRepositoryInterface $productRepository = null,
+        ?LinkTypeProvider $linkTypeProvider = null,
+        ?AttributeFilter $attributeFilter = null
     ) {
         $this->request = $request;
         $this->storeManager = $storeManager;

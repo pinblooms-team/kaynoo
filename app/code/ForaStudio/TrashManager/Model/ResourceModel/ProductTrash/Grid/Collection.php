@@ -20,7 +20,7 @@ class Collection extends TrashCollection implements SearchResultInterface {
 	 * @param ExtensibleDataInterface[] $items
 	 * @return $this
 	 */
-	public function setItems(array $items = null) {
+	public function setItems(?array $items = null) {
 		// echo get_class($this);exit;
 		return $this;
 	}

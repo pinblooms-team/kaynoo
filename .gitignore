@@ -10,14 +10,19 @@
 /.settings
 /.vscode
 /.idea
+/.editorconfig
 atlassian*
 /nbproject
 .DS_Store
 Thumbs.db
 
-# Secrets
+# Secrets and local env
 /auth.json
+/auth.json.sample
 /app/etc/env.php
+/.docker-services.env
+/.user.ini
+/php.dev.ini
 *.pem
 *.key
 
@@ -29,8 +34,21 @@ Thumbs.db
 /*.tar.gz
 /*.tgz
 *.rej
+/composer.lock-old
 
-# Restored by composer install (magento-composer-installer)
+# Restored by composer install (magento/project-community-edition)
+/.htaccess
+/.htaccess.sample
+/.php-cs-fixer.dist.php
+/CHANGELOG.md
+/COPYING.txt
+/LICENSE.txt
+/LICENSE_AFL.txt
+/SECURITY.md
+/Gruntfile.js.sample
+/grunt-config.json.sample
+/nginx.conf.sample
+/package.json.sample
 /bin/
 /dev/
 /lib/
@@ -44,10 +62,9 @@ Thumbs.db
 /var/
 
 # Published files, uploads, and local tools
-/pub/static/**
-!/pub/static/.htaccess
-/pub/media/**
-!/pub/media/.htaccess
+/pub/static/
+/pub/media/
+/pub/errors/local.xml.sample
 /pub/opt/
 /pub/pma_db/
 /pub/robots.txt
@@ -56,12 +73,16 @@ Thumbs.db
 /sitemap
 /sitemap.xml
 
-# Local helpers and stock server sample (not used by Magento itself)
+# Local helpers, Docker leftovers, stock Magento samples
 /mutagen.sh
 /permit.sh
 /nginx.conf
 /package.json
 /package-lock.json
+/.docker/
+/docker/
+/docker-compose.yml
+/docker-sync.yml
 
 # Frontend tooling
 /node_modules

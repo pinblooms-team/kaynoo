@@ -10,13 +10,14 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "magento/composer-dependency-version-audit-plugin": true,
-            "magento/magento-composer-installer": true,
-            "magento/inventory-composer-installer": true,
+            "cweagans/composer-patches": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "magento/composer-root-update-plugin": true,
-            "laminas/laminas-dependency-plugin": true,
-            "cweagans/composer-patches": true
+            "laminas/laminas-dependency-plugin": false,
+            "magento/composer-dependency-version-audit-plugin": true,
+            "magento/composer-root-update-plugin": false,
+            "magento/inventory-composer-installer": true,
+            "magento/magento-composer-installer": true,
+            "php-http/discovery": true
         }
     },
     "version": "2.4.1",
@@ -59,23 +60,21 @@
         "amasty/paction": "^1.3",
         "amasty/shopby": "^4.1",
         "amasty/shopby-seo": "^3.0",
-        "ced/marketplace-platinum": "^6.0",
         "creativestyle/magesuite-magepack": "^1.1",
         "cweagans/composer-patches": "^1.7",
         "experius/module-emailcatcher": "^3.5",
-        "laminas/laminas-dependency-plugin": "^2.2",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "~2.0",
         "magento/ece-tools": "*",
-        "magento/product-community-edition": "2.4.4-p2",
+        "magento/product-community-edition": "2.4.9",
         "magento/quality-patches": "^1.1",
-        "magepal/magento2-gmailsmtpapp": "^2.9",
+        "magepal/magento2-gmailsmtpapp": "^3.0.6",
         "magestyapps/module-web-images": "^1.1",
         "mirasvit/module-rewards": "*",
         "mirasvit/module-search-ultimate": "*",
         "olegkoval/magento2-regenerate-url-rewrites": "^1.6",
         "paragonie/random_compat": "^9.99",
-        "yireo/magento2-webp2": "^0.12.5"
+        "yireo/magento2-webp2": "^0.14.3"
     },
     "autoload": {
         "exclude-from-classmap": [
@@ -99,19 +98,17 @@
         }
     },
     "require-dev": {
-        "allure-framework/allure-phpunit": "~1.5.0",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
-        "friendsofphp/php-cs-fixer": "~3.4.0",
-        "lusitanian/oauth": "~0.8.10",
+        "allure-framework/allure-phpunit": "^3.2",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7 || ^1.0",
+        "dg/bypass-finals": "^1.4",
+        "friendsofphp/php-cs-fixer": "^3.22",
         "magento/magento-coding-standard": "*",
-        "magento/magento2-functional-testing-framework": "^3.7",
-        "pdepend/pdepend": "~2.10.0",
-        "phpmd/phpmd": "^2.12.0",
-        "phpstan/phpstan": "^1.6.8",
-        "phpunit/phpunit": "~9.5.20",
-        "sebastian/phpcpd": "^6.0.3",
-        "squizlabs/php_codesniffer": "~3.6.0",
-        "symfony/finder": "^5.2"
+        "magento/magento2-functional-testing-framework": "^6.0",
+        "pdepend/pdepend": "^3@dev",
+        "phpmd/phpmd": "^3@dev",
+        "phpstan/phpstan": "^1.9",
+        "phpunit/phpunit": "^12.0",
+        "symfony/finder": "^7.4"
     },
     "conflict": {
         "gene/bluefoot": "*"

@@ -9,6 +9,7 @@ use Magento\Framework\View\Result\PageFactory;
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
 
+    protected $_storeManager;
     protected $_objectManager;
     protected $_categoryHelper;
     protected $_categoryFactory;
