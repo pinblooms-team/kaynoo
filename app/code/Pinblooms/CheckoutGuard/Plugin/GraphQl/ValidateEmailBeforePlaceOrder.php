@@ -42,8 +42,8 @@ class ValidateEmailBeforePlaceOrder
         Field $field,
         $context,
         ResolveInfo $info,
-        array $value = null,
-        array $args = null
+        ?array $value = null,
+        ?array $args = null
     ): void {
         if (!$this->config->isEnabled()) {
             return;

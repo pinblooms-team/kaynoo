@@ -48,7 +48,7 @@ class ValidateGuestPaymentInformation
         $cartId,
         $email,
         PaymentInterface $paymentMethod,
-        AddressInterface $billingAddress = null
+        ?AddressInterface $billingAddress = null
     ) {
         $this->assertAllowed((string) $cartId, (string) $email, $paymentMethod, $billingAddress);
         return null;
@@ -65,7 +65,7 @@ class ValidateGuestPaymentInformation
         $cartId,
         $email,
         PaymentInterface $paymentMethod,
-        AddressInterface $billingAddress = null
+        ?AddressInterface $billingAddress = null
     ) {
         $this->assertAllowed((string) $cartId, (string) $email, $paymentMethod, $billingAddress);
         return null;

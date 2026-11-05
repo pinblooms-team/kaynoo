@@ -101,8 +101,8 @@ class Slider extends AbstractModel implements IdentityInterface
         CollectionFactory $bannerCollectionFactory,
         Context $context,
         Registry $registry,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->bannerCollectionFactory = $bannerCollectionFactory;

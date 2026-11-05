@@ -43,7 +43,7 @@
         </div>
     <?php endif ?>
     <script>
-        window.checkout = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($block->getConfig()); ?>;
+        window.checkout = <?php /* @noEscape */ echo json_encode($block->getConfig()); ?>;
     </script>
     <script type="text/x-magento-init">
         {

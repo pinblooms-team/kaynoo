@@ -114,8 +114,8 @@ class Banner extends AbstractModel implements IdentityInterface
         Context $context,
         Registry $registry,
         configImage $configImage,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->sliderCollectionFactory = $sliderCollectionFactory;

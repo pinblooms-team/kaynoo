@@ -77,7 +77,7 @@ class InvoiceSender extends CoreInvoiceSender
         InvoiceResource $invoiceResource,
         \Magento\Framework\App\Config\ScopeConfigInterface $globalConfig,
         ManagerInterface $eventManager,
-        Emulation $appEmulation = null
+        ?Emulation $appEmulation = null
     ) {
         parent::__construct($templateContainer, $identityContainer, $senderBuilderFactory, $logger, $addressRenderer, $paymentHelper, $invoiceResource, $globalConfig, $eventManager);
         $this->paymentHelper = $paymentHelper;

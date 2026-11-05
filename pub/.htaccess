@@ -1,4 +1,3 @@
-Header add Access-Control-Allow-Origin "*"
 ############################################
 ## Optional override of deployment mode. We recommend you use the
 ## command bin/magento deploy:mode:set to switch modes instead
@@ -283,44 +282,9 @@ ErrorDocument 403 /errors/404.php
     # the `X-UA-Compatible` response header should be send only for
     # HTML documents and not for the other resources.
     <FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|webmanifest|woff2?|xloc|xml|xpi)$">
-        #Header unset X-UA-Compatible
-        Header set Access-Control-Allow-Origin "*"
+        Header unset X-UA-Compatible
     </FilesMatch>
 
     ## Prevent clickjacking
     Header set X-Frame-Options SAMEORIGIN
-
-</IfModule>
-
-<IfModule mod_expires.c>
-  ExpiresActive On
-
- # Images
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/gif "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
-
-  # Video
-  ExpiresByType video/webm "access plus 1 year"
-  ExpiresByType video/mp4 "access plus 1 year"
-  ExpiresByType video/mpeg "access plus 1 year"
-
-  # Fonts
-  ExpiresByType font/ttf "access plus 1 year"
-  ExpiresByType font/otf "access plus 1 year"
-  ExpiresByType font/woff "access plus 1 year"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType application/font-woff "access plus 1 year"
-
-  # CSS, JavaScript
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType text/javascript "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-
-  # Others
-  ExpiresByType application/pdf "access plus 1 year"
-  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
 </IfModule>

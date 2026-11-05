@@ -12,6 +12,10 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
+	/**
+	 * @var StoreManagerInterface
+	 */
+	protected $_storeManager;
 
 	public function __construct(
 		StoreManagerInterface $storeManagerInterface,

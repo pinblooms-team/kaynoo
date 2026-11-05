@@ -11,14 +11,13 @@ Options -Indexes
 AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
 Options -ExecCGI
 
-<FilesMatch ".+\.(ph(p[3457]?|t|tml)|[aj]sp|p[ly]|sh|cgi|shtml?|html?)$">
+<FilesMatch ".*\.(ph(p[3457]?|t|tml)|[aj]sp|p[ly]|sh|cgi|shtml?|html?)$">
 SetHandler default-handler
 </FilesMatch>
 
 <IfModule mod_rewrite.c>
 
 ############################################
-
 ## enable rewrites
 
     Options +FollowSymLinks
@@ -28,34 +27,26 @@ SetHandler default-handler
     #RewriteBase /magento/pub/media/
 
 ############################################
-
 ## never rewrite for existing files
-
     RewriteCond %{REQUEST_FILENAME} !-f
 
 ############################################
-
 ## rewrite everything else to get.php
 
-    RewriteRule .* ../get.php [L]
-
+    RewriteRule .*.(ico|jpg|jpeg|png|gif|svg|svgz|webp|avif|avifs|js|css|eot|ttf|otf|woff|woff2)$ ../get.php [L]
 </IfModule>
 
 ############################################
-
 ## setting MIME types
 
 # JavaScript
-
 AddType application/javascript js jsonp
 AddType application/json json
 
 # CSS
-
 AddType text/css css
 
 # Images and icons
-
 AddType image/x-icon ico
 AddType image/gif gif
 AddType image/png png
@@ -66,11 +57,9 @@ AddType image/avif avif
 AddType image/avif-sequence avifs
 
 # SVG
-
 AddType image/svg+xml svg svgz
 
 # Fonts
-
 AddType application/vnd.ms-fontobject eot
 AddType application/x-font-ttf ttf
 AddType application/x-font-otf otf
@@ -78,7 +67,6 @@ AddType application/x-font-woff woff
 AddType application/font-woff2 woff2
 
 # Archives and exports
-
 AddType application/zip gzip
 AddType application/x-gzip gz gzip
 AddType application/x-bzip2 bz2
@@ -88,8 +76,7 @@ AddType application/xml xml
 <IfModule mod_headers.c>
 
     <FilesMatch .*\.(ico|jpg|jpeg|png|gif|svg|svgz|webp|avif|avifs|js|css|eot|ttf|otf|woff|woff2)$>
-        #Header append Cache-Control public
-        Header set Access-Control-Allow-Origin "*"
+        Header append Cache-Control public
     </FilesMatch>
 
     <FilesMatch .*\.(zip|gz|gzip|bz2|csv|xml)$>
@@ -101,9 +88,7 @@ AddType application/xml xml
 <IfModule mod_expires.c>
 
 ############################################
-
 ## Add default Expires header
-
 ## http://developer.yahoo.com/performance/rules.html#expires
 
     ExpiresActive On
