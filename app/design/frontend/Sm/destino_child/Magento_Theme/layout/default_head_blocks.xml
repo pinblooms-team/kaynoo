@@ -4,6 +4,8 @@
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0"/>
 
         <remove src="Magefan_Blog::css/blog-custom.css"/>
+        <link src="https://fonts.googleapis.com/css?family=Poppins:400" src_type="url"/>
+        <link src="https://fonts.googleapis.com/css?family=Poppins:600" src_type="url"/>
         <css src="css/category-mageplaza-banners.css"/>
         <css src="css/destino-settings.css"/>
     </head>
