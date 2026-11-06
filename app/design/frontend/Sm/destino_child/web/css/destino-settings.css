@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,600");
+@font-face{font-family:Poppins;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfedA.woff2) format("woff2")}
+@font-face{font-family:Poppins;font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlEA.woff2) format("woff2")}
  body{ font-family: Poppins, sans-serif; font-size: 12px; color: #3E3E3E;  font-weight: 400;  } body label, body .label{  color: #3E3E3E;  } .page-wrapper .fieldset > .field:not(.choice) > .label{  color: #3E3E3E;  }  .title-footer,
 .cart-header-container .minicart-wrapper .action.showcart .text,
 .page-header .minicart-wrapper .block-minicart .block-content .subtitle,
