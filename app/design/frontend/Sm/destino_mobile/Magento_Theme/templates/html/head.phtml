@@ -1,44 +1,36 @@
 <?php
-$_config = $this->helper('Sm\Destino\Helper\Data');
-$store_id = $_config->getStoreId();
-$_css_load_file = $this->helper('Sm\Destino\Helper\Cssconfig');
+	$_config = $this->helper('Sm\Destino\Helper\Data');
+	$store_id = $_config->getStoreId();
+	$_css_load_file = $this->helper('Sm\Destino\Helper\Cssconfig');
+	
+	$main_font = $_config->getFont('body_font');
+	$main_google_font = $_config->getFont('body_google_font');
+	$google_font_element = $_config->getFont('google_font_targets');
+	$element_google_font_name = $_config->getFont('element_google_font');
+	$headerStyle = $_config->getHeader('header_style');
+	$homeStyle = $_config->getGeneral('home_style');
+	$footerStyle = $_config->getFooter('footer_style');
+	$layout = $_config->getGeneral('layout_style');
+	$product_hover = $_config->getCategoryView('hover_image_effect');
 
-$main_font = $_config->getFont('body_font');
-$main_google_font = $_config->getFont('body_google_font');
-$google_font_element = $_config->getFont('google_font_targets');
-$element_google_font_name = $_config->getFont('element_google_font');
-$headerStyle = $_config->getHeader('header_style');
-$homeStyle = $_config->getGeneral('home_style');
-$footerStyle = $_config->getFooter('footer_style');
-$layout = $_config->getGeneral('layout_style');
-$product_hover = $_config->getCategoryView('hover_image_effect');
-
-$right_to_left = $_config->getGeneral('rtl_layout');
-
-$enableLadyLoading = $_config->getAdvanced('enable_ladyloading');
+	$right_to_left = $_config->getGeneral('rtl_layout');
+	
+	$enableLadyLoading = $_config->getAdvanced('enable_ladyloading');
 ?>
-<?php if ($main_font == 'google_font') { ?>
-	<link rel="stylesheet" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=<?php echo $main_google_font ?>" />
+<?php if( $main_font == 'google_font' ){?>
+<link rel="stylesheet" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=<?php echo $main_google_font ?>" />
 <?php } ?>
 
-<?php if ($google_font_element != '') { ?>
-	<link rel="stylesheet" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=<?php echo $element_google_font_name ?>" />
+<?php if($google_font_element != ''){?>
+<link rel="stylesheet" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=<?php echo $element_google_font_name ?>" />
 <?php } ?>
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_css_load_file->getSettingsFile() ?>">
-<?php if ($right_to_left) { ?>
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_css_load_file->getSettingsFile()?>">
+<?php if($right_to_left){ ?>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php echo $block->getViewFileUrl('css/styles-rtl.css'); ?>" />
 <?php } ?>
 <style>
-	<?php echo $_config->getAdvanced('custom_css'); ?>
+<?php echo $_config->getAdvanced('custom_css');?>
 </style>
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" type="image/svg+xml" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
 
 <script type="text/javascript">
 	require([
@@ -46,22 +38,21 @@ $enableLadyLoading = $_config->getAdvanced('enable_ladyloading');
 		'jqueryunveil',
 		'yttheme',
 		'domReady!'
-	], function($) {
-		<?php if ($enableLadyLoading) { ?>
-
-			function _runLazyLoad() {
-				$("img.lazyload").unveil(0, function() {
+	], function ($) {
+		<?php if($enableLadyLoading){ ?>
+			function _runLazyLoad () {
+				 $("img.lazyload").unveil(0,function(){
 					$(this).load(function() {
 						this.classList.remove("lazyload");
 					});
 				});
 			}
 			_runLazyLoad();
-			$(document).on("afterAjaxLazyLoad", function(event) {
+			$(document).on("afterAjaxLazyLoad", function( event) {
 				_runLazyLoad();
 			});
-
-		<?php } ?>
+           
+        <?php } ?>
 	});
 </script>
 
@@ -70,14 +61,15 @@ $enableLadyLoading = $_config->getAdvanced('enable_ladyloading');
 	require([
 		'jquery',
 		'domReady!'
-	], function($) {
-		$('body').addClass('<?php echo $layout . '_layout'; ?>');
-		$('body').addClass('<?php echo $product_hover . '_hover_effect'; ?>');
+	], function ($) {
+		$('body').addClass('<?php echo $layout . '_layout';?>');
+		$('body').addClass('<?php echo $product_hover . '_hover_effect';?>');
 
-		<?php if ($right_to_left) { ?>
+		<?php if($right_to_left){ ?>
 			$('body').addClass('rtl_layout');
 		<?php } ?>
 	});
+	
 </script>
 
-<?php echo $_config->getAdvanced('custom_js'); ?>
+<?php echo $_config->getAdvanced('custom_js');?>

@@ -13,6 +13,9 @@ namespace Sm\CartQuickPro\Controller\Cart;
 use Magento\Checkout\Model\Cart as CustomerCart;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+use Magento\Framework\Filter\LocalizedToNormalized;
+use Magento\Framework\Locale\ResolverInterface;
+use Psr\Log\LoggerInterface;
 
 class UpdateItemOptions extends \Magento\Checkout\Controller\Cart implements HttpPostActionInterface
 {
@@ -70,10 +73,12 @@ class UpdateItemOptions extends \Magento\Checkout\Controller\Cart implements Htt
         }
         try {
             if (isset($params['qty'])) {
-                $filter = new \Zend_Filter_LocalizedToNormalized(
-                    ['locale' => $this->_objectManager->get('Magento\Framework\Locale\ResolverInterface')->getLocale()]
+               $inputFilter = new LocalizedToNormalized(
+                    [
+                        'locale' => $this->_objectManager->get(ResolverInterface::class)->getLocale(),
+                    ]
                 );
-                $params['qty'] = $filter->filter($params['qty']);
+                $params['qty'] = $inputFilter->filter($params['qty']);
             }
 
             $quoteItem = $this->cart->getQuote()->getItemById($id);

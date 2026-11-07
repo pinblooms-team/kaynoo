@@ -357,7 +357,7 @@ class ListingTabs extends \Magento\Catalog\Block\Product\AbstractProduct
 	private function _getAllChildren($catids, $group = false) {
 		$list = [];
 		$cat_tmps = '';
-		!is_array($catids) && $catids = preg_split('/[\s|,|;]/', $catids, -1, PREG_SPLIT_NO_EMPTY);
+		!is_array($catids) && $catids = preg_split('/[\s|,|;]/', (string)$catids, -1, PREG_SPLIT_NO_EMPTY);
 		if (!empty($catids) && is_array($catids)){
 			foreach($catids as $i => $catid ) {
 				$object_manager = $this->_objectManager->create('Magento\Catalog\Model\Category')->load($catid);
@@ -419,7 +419,7 @@ class ListingTabs extends \Magento\Catalog\Block\Product\AbstractProduct
 		$type_listing = $this->_getConfig('type_listing');   
 		$under_price = $this->_getConfig('under_price', '4.99'); 	
         $catids =  $catids == null ? $this->_getConfig('category_tabs') : $catids;
-		!is_array($catids) && $catids = preg_split('/[\s|,|;]/', $catids, -1, PREG_SPLIT_NO_EMPTY);
+		!is_array($catids) && $catids = preg_split('/[\s|,|;]/', (string)$catids, -1, PREG_SPLIT_NO_EMPTY);
 		$collection = $this->_objectManager->create(\Magento\Catalog\Model\ResourceModel\Product\Collection::class);
 		$connection  = $this->_resource->getConnection();
 		if ($type_listing == 'under'){

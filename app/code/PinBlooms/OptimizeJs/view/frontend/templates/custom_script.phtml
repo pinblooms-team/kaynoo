@@ -1,9 +1,7 @@
 <?php
-
-/** @var \PinBlooms\OptimizeJs\Block\Template $block */
-?>
-
-<script>
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+$scriptString = <<<'JS'
     var w3_lazy_load_by_px = 80;
     var blank_image_webp_url = "https://eadn-wc01-10771960.nxedge.io/media/w3-cache/blank.pngw3.webp";
     var google_fonts_delay_load = 100;
@@ -11,7 +9,7 @@
     var w3_webp_path = "/w3-webp/media";
     var w3_mousemoveloadimg = false;
     var w3_page_is_scrolled = false;
-    var w3_lazy_load_js = 1;
+    var w3_lazy_load_js = 0;
     var w3_js_is_excluded = 0;
     var w3_excluded_js = 0;
     class w3_loadscripts {
@@ -224,5 +222,7 @@
             }, 500, e)
         }
     }
-    w3_loadscripts.execute();
-</script>
+    // Disabled: w3_loadscripts.execute() rewrites DOMContentLoaded and blocks Magento mage-init.
+JS;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>

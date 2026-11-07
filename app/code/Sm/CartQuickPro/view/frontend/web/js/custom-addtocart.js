@@ -241,9 +241,9 @@ define([
 							return false;
 						}
 					}else{
-						 var _dataPost = $(this).attr('data-post');
+						// var _dataPost = $.parseJSON($(this).attr('data-post'));
+						var _dataPost = (typeof _that.attr('data-post') !== 'undefined') ? $.parseJSON(_that.attr('data-post')) : null;
 						 if (_dataPost) {
-                             _dataPost = $.parseJSON($(this).attr('data-post'));
 							var _formKey = $("input[name='form_key']").val();
 							_params += (typeof _dataPost.data.product !== 'undefined' ? '&product=' + _dataPost.data.product : '');
 							_params += (typeof _dataPost.data.item !== 'undefined' ? '&item=' + _dataPost.data.item : '');
@@ -472,12 +472,13 @@ define([
 					frameborder:0,
 					width:'100%',
 					height: '301px',
-					load:function(){
+
+				});
+				ifr.on('load', function(){
 						_self._hideLoader();
 						$(_options.idContents).show();
 						_self.setHeightIframe(ifr);
-					}
-				});
+				})
 				$(_options.idContents).append(ifr);
 				$(_options.idContents).trigger('contentUpdated');
 

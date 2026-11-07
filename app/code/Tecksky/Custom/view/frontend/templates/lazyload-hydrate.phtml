@@ -1,0 +1,40 @@
+<?php
+/**
+ * Amasty native lazy load skips display:none Owl slides (offsetParent is null).
+ * Mageplaza banners stay as 1×1 placeholders until a scroll event. Re-run lazy
+ * load after Owl initializes and copy data-amsrc on homepage sliders.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+
+$script = <<<'JS'
+    require(['jquery'], function ($) {
+        var hydrate = function () {
+            document.querySelectorAll('.mp-banner-slider img[data-amsrc]').forEach(function (img) {
+                var src = img.getAttribute('data-amsrc');
+                if (src) {
+                    img.src = src;
+                    img.removeAttribute('data-amsrc');
+                }
+                var srcset = img.getAttribute('data-amsrcset');
+                if (srcset) {
+                    img.srcset = srcset;
+                    img.removeAttribute('data-amsrcset');
+                }
+            });
+            if (typeof window.amlazycallback === 'function') {
+                window.amlazycallback();
+            }
+            window.dispatchEvent(new Event('scroll'));
+        };
+
+        $(hydrate);
+        $(window).on('load', hydrate);
+        $(document).on('initialized.owl.carousel', hydrate);
+        setTimeout(hydrate, 400);
+        setTimeout(hydrate, 1500);
+    });
+JS;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $script, false) ?>

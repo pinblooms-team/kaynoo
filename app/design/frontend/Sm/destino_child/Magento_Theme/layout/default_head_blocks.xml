@@ -5,5 +5,7 @@
 
         <remove src="Magefan_Blog::css/blog-custom.css"/>
         <css src="css/category-mageplaza-banners.css"/>
+        <css src="css/destino-settings.css"/>
+        <css src="css/product-images.css"/>
     </head>
 </page>

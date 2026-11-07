@@ -6,7 +6,7 @@ use Magento\Framework\Registry;
 class Color extends \Magento\Config\Block\System\Config\Form\Field
 {
     protected $_coreRegistry;
-
+    
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         Registry $coreRegistry,
@@ -15,12 +15,12 @@ class Color extends \Magento\Config\Block\System\Config\Form\Field
         $this->_coreRegistry = $coreRegistry;
         parent::__construct($context, $data);
     }
-
+    
     protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
         $base = $this->getBaseUrl();
         $html = $element->getElementHtml();
-        $cpPath = $base.'media/sm/color/';
+        $cpPath = $base.'pub/media/sm/color/';
         if(!$this->_coreRegistry->registry('colorpicker_loaded')) {
             $html .= '<script type="text/javascript" src="'. $cpPath .'jscolor.js"></script>
 			<style type="text/css">input.jscolor { background-image: url('.$cpPath.'color.png) !important; background-position: calc(100% - 10px) center; background-repeat: no-repeat; padding-right: 44px !important; } input.jscolor.disabled,input.jscolor[disabled] { pointer-events: none; }</style>';

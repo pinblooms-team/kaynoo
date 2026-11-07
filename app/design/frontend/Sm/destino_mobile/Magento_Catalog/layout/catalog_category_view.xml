@@ -5,16 +5,8 @@
  * See COPYING.txt for license details.
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
-      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-     <referenceContainer name="content">
-  <referenceBlock name="product_list_toolbar">
-          <action method="setDefaultDirection">
-              <argument name="dir" xsi:type="string">desc</argument>
-            </action>
-  </referenceBlock>
-</referenceContainer>
-        <move element="category.image" destination="columns.top" before="-"/>
+		<move element="category.image" destination="columns.top" before="-"/>
     </body>
 </page>

@@ -84,12 +84,12 @@ if (count($products)){
     ?>
     <div class="products wrapper <?php /* @escapeNotVerified */ echo $viewMode; ?> products-<?php /* @escapeNotVerified */ echo $viewMode; ?>">
         <?php $iterator = 1; ?>
-        <div class="grid-product-type products list items product-items clearfix  <?php echo $classType; ?>" <?php if ($typeGrid == 'simple') echo 'data-liffect="fadeIn"'; ?> <?php echo $type_loadmore ? 'data-liffect="fadeIn"' : ''; ?>>
+        <div class="grid-product-type products list items product-items clearfix  <?php echo $classType; ?>">
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($products as $_product):
 
 			?>
-                <div class="item product product-item ltabs-mark">
+                <div class="item product product-item">
 					<div class="item-inner">
 						<div class="product-item-info" data-container="product-grid">
 							<?php
