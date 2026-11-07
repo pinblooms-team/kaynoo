@@ -371,10 +371,16 @@ class FilterProducts extends \Magento\Catalog\Block\Product\AbstractProduct
 			->addAttributeToSelect('short_description')
 			->addAttributeToSelect('special_from_date')
 			->addAttributeToSelect('special_to_date')
-			->addAttributeToFilter('special_price', ['neq' => ''])
-			->addAttributeToFilter('special_from_date', ['lteq' => date('Y-m-d  H:i:s', strtotime($now))])
-			->addAttributeToFilter('special_to_date', ['gteq' => date('Y-m-d  H:i:s', strtotime($now))])
-			->addAttributeToFilter('is_saleable', ['eq' => 1], 'left');
+			->addAttributeToFilter('special_price', ['gt' => 0])
+			->addAttributeToFilter([
+				['attribute' => 'special_from_date', 'null' => true],
+				['attribute' => 'special_from_date', 'lteq' => $now],
+			])
+			->addAttributeToFilter([
+				['attribute' => 'special_to_date', 'null' => true],
+				['attribute' => 'special_to_date', 'gteq' => $now],
+			])
+			->addAttributeToFilter('status', ['eq' => \Magento\Catalog\Model\Product\Attribute\Source\Status::STATUS_ENABLED]);
 		if (!empty($category_id) && $category_id){
 			$collection->joinField(
 				'category_id',
@@ -386,6 +392,14 @@ class FilterProducts extends \Magento\Catalog\Block\Product\AbstractProduct
 			)->addAttributeToFilter(array(array('attribute' => 'category_id', 'in' => array( $category_id))));
 		}
 		$collection->setVisibility($this->_catalogProductVisibility->getVisibleInCatalogIds());
+		if ($connection->isTableExists($this->_resource->getTableName('inventory_source_item'))) {
+			$collection->getSelect()->join(
+				['isi' => $connection->getTableName($this->_resource->getTableName('inventory_source_item'))],
+				'isi.sku = e.sku AND isi.status = 1 AND isi.quantity > 0',
+				[]
+			);
+		}
+		$collection->addAttributeToSort('special_from_date', 'desc');
 		$collection->getSelect()->distinct(true)->group('e.entity_id')->limit($count);
 		return $collection;
 	}

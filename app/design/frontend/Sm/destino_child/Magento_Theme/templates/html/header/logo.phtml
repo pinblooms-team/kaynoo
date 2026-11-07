@@ -19,9 +19,18 @@
         <a class="logo" href="<?php echo $block->getUrl(''); ?>" title="<?php /* @escapeNotVerified */
                                                                         echo $storeName ?>">
         <?php endif ?>
+        <?php
+        $logoSizeResolver = $block->getLogoSizeResolver();
+        $logoWidth = $logoSizeResolver !== null && $logoSizeResolver->getWidth()
+            ? $logoSizeResolver->getWidth()
+            : ($block->getLogoWidth() ?: 170);
+        $logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
+            ? $logoSizeResolver->getHeight()
+            : ($block->getLogoHeight() ?: 150);
+        ?>
         <img loading="eager" src="<?php /* @escapeNotVerified */
                                     echo $block->getLogoSrc() ?>" alt="<?php /* @escapeNotVerified */
-                                                                        echo $block->getLogoAlt() ?>" <?php echo $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?> <?php echo $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?> />
+                                                                        echo $block->getLogoAlt() ?>" width="<?= (int)$logoWidth ?>" height="<?= (int)$logoHeight ?>" />
         <?php if ($block->isHomePage()) : ?>
     </h1>
 <?php else : ?>

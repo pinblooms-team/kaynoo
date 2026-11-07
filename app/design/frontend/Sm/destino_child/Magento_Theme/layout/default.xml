@@ -4,11 +4,27 @@
         <referenceContainer name="head.additional">
             <block class="Magento\Framework\View\Element\Template" name="kaynoo.google.fonts" template="Magento_Theme::html/google-fonts.phtml"/>
         </referenceContainer>
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="kaynoo.marketplace.link" before="authorization-link-login">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Marketplace</argument>
+                    <argument name="path" xsi:type="string">csmarketplace/vshops/index</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link" name="kaynoo.sell.link" after="kaynoo.marketplace.link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Vendre sur Kaynoo</argument>
+                    <argument name="path" xsi:type="string">csmarketplace</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/logo.svg</argument>
+                <argument name="logo_width" xsi:type="number">170</argument>
+                <argument name="logo_height" xsi:type="number">150</argument>
                 <argument name="logo_img_width" xsi:type="number">170</argument>
-                <argument name="logo_img_height" xsi:type="number">46</argument>
+                <argument name="logo_img_height" xsi:type="number">150</argument>
             </arguments>
         </referenceBlock>
     </body>

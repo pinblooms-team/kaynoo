@@ -18,6 +18,11 @@ class ReplaceScriptTypeObserver implements ObserverInterface
         /** @var \Magento\Framework\App\Response\Http $response */
         $response = $observer->getResponse();
 
+        // Magento 2.4.9: rewriting scripts to lazyload_int delays require()/mage-init
+        // until a gesture (or breaks DOMContentLoaded), so add-to-cart never binds.
+        // Leave HTML unchanged; third-party defer can be re-enabled with Magepack later.
+        return;
+
         // Get the response body
         $body = $response->getBody();
 
@@ -28,29 +33,41 @@ class ReplaceScriptTypeObserver implements ObserverInterface
         $callback = function ($matches) {
             $scriptTag = $matches[0];
 
-            // Define patterns to exclude from lazyload_int replacement and defer attribute addition
+            // Inline Magento require()/mage-init must run immediately or add-to-cart never binds.
+            if (!preg_match('/\ssrc\s*=/i', $scriptTag)) {
+                return $scriptTag;
+            }
+
             $excludedPatterns = [
-                '.min.js'
+                '.min.js',
+                'w3_loadscripts',
+                '_cache/merged/',
+                'mage/requirejs',
+                'requirejs-config',
+                'require.js',
+                'mixins.js',
+                'Magento_Catalog',
+                'Magento_Checkout',
+                'Magento_Customer',
+                'Magento_Ui',
+                'Magento_PageCache',
+                'catalogAddToCart',
+                'mage/cookies',
+                'form-key',
             ];
 
-            // Check if any excluded pattern matches
-            foreach ($excludedPatterns as $pattern) {
-                if (strpos($scriptTag, $pattern) !== false) {
-                    // Return the script tag as is for excluded patterns
+            foreach ($excludedPatterns as $exclude) {
+                if (stripos($scriptTag, $exclude) !== false) {
                     return $scriptTag;
                 }
             }
 
-            // Replace type for non-excluded scripts
             $scriptTag = str_replace('type="text/javascript"', 'type="lazyload_int"', $scriptTag);
 
             return $scriptTag;
         };
 
-        // Apply the callback function to the response body
         $modifiedBody = preg_replace_callback($pattern, $callback, $body);
-
-        // Set the modified content back to the response
-        $response->setBody($modifiedBody);
+        $response->setBody(is_string($modifiedBody) ? $modifiedBody : $body);
     }
 }
