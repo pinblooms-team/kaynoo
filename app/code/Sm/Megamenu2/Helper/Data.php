@@ -9,13 +9,14 @@ use Magento\Framework\View\Result\PageFactory;
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
 
-    protected $_storeManager;
-    protected $_objectManager;
+	protected $_storeManager ;
+	protected $resultPageFactory;
+	protected $_objectManager;
     protected $_categoryHelper;
     protected $_categoryFactory;
     protected $_categoryFlatConfig;
     protected $_filterProvider;
-    protected $resultPageFactory;
+    
     
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,

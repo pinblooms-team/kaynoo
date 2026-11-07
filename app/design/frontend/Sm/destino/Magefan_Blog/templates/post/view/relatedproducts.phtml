@@ -29,7 +29,7 @@ if ($exist = $block->getItems()->getSize() && $this->displayProducts()) {
     $showWishlist = true;
     $showCompare = true;
     $showCart = false;
-    $templateType = null;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
     $description = false;
 }
 
@@ -150,7 +150,7 @@ $show_pecent = $_config->getAdvanced('show_salediscount');
 		</div>
 	</div>
 
-<script type="text/javascript">
+<script>
 	require([
 		'jquery',
 		'owlcarousel'

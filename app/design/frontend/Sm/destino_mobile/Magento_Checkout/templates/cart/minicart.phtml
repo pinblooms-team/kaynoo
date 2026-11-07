@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
@@ -11,44 +10,46 @@
 ?>
 
 <div id="mycart-drop" data-block="minicart" class="block-bottom">
-    <a class="button-sticky-bottom" href="#" data-drop="mycart-drop" data-bind="scope: 'minicart_content'">
+    <a class="button-sticky-bottom" href="javascript:void(0)" data-drop="mycart-drop"
+       data-bind="scope: 'minicart_content'">
         <i class="fa fa-shopping-basket" style="font-size: 16px;"></i>
-        <span><?php echo __('My Cart'); ?></span>
+		<span><?php echo __('My Cart');?></span>
 
-        <span class="counter qty empty" data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
-
+        <span class="counter qty empty"
+              data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+            
             <!-- ko if: getCartParam('summary_count') -->
-            <span class="counter-label">
+				<span class="counter-label">
                 <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
-            </span>
+				</span>
             <!-- /ko -->
-
+            
         </span>
     </a>
-    <?php if ($block->getIsNeedToDisplaySideBar()) : ?>
+    <?php if ($block->getIsNeedToDisplaySideBar()): ?>
         <div class="dropdown-header-sticky mycart-dropdown empty">
-            <div class="content-dropdown-sticky">
-                <div class="title-sticky-bottom">
-                    <?php echo __('Shopping Cart') ?>
-                    <span class="toggle-button-sticky close-sticky-bottom" data-drop="mycart-drop"><i class="fa fa-times"></i></span>
-                </div>
-
-                <div class="content-dropdown">
-                    <div id="minicart-content-wrapper" data-bind="scope: 'minicart_content'">
-                        <!-- ko template: getTemplate() --><!-- /ko -->
-                    </div>
-                    <?php echo $block->getChildHtml('minicart.addons'); ?>
-                </div>
-            </div>
+			<div class="content-dropdown-sticky">
+				<div class="title-sticky-bottom">
+					<?php echo __('Shopping Cart')?>
+					<a class="toggle-button-sticky close-sticky-bottom" data-drop="mycart-drop"><i class="fa fa-times"></i></a>
+				</div>
+				
+				<div class="content-dropdown">				
+					<div id="minicart-content-wrapper" data-bind="scope: 'minicart_content'">
+						<!-- ko template: getTemplate() --><!-- /ko -->
+					</div>
+					<?php echo $block->getChildHtml('minicart.addons'); ?>
+				</div>
+			</div>
         </div>
     <?php endif ?>
     <script>
         window.checkout = <?php /* @noEscape */ echo json_encode($block->getConfig()); ?>;
     </script>
     <script type="text/x-magento-init">
-        {
+    {
         "[data-block='minicart']": {
-            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
         },
         "*": {
             "Magento_Ui/js/block-loader": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
@@ -56,3 +57,5 @@
     }
     </script>
 </div>
+
+

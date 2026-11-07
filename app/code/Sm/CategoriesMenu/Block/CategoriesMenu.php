@@ -112,7 +112,7 @@ class CategoriesMenu  extends \Magento\Framework\View\Element\Template
 	public function _getList()
 	{
 		$catids = $this->_getConfig('select_category');
-		!is_array($catids) && $catids = preg_split('/[\s|,|;]/', $catids, -1, PREG_SPLIT_NO_EMPTY);
+		!is_array($catids) && $catids = preg_split('/[\s|,|;]/', (string)$catids, -1, PREG_SPLIT_NO_EMPTY);
 		$list = [];
 		if (!empty($catids)) {
 			$str = ''; ;

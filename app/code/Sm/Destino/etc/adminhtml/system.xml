@@ -1056,7 +1056,7 @@
 				<label>Product Information</label>
 				<field id="author" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label><![CDATA[<p>Author: <a target="_blank" title="Magentech" href="http://www.magentech.com">Magentech</a></p>
-											<p>Version: 5.4.0</p>
+											<p>Version: 5.7.0</p>
 											<p>Userguide: <a target="_blank" title="Usergide" href="http://www.magentech.com/documentation/sm-destino-magento-2-1-0/">Userguide</a></p>
 											<p>Support: <a target="_blank" href="http://www.magentech.com/forum">http://www.magentech.com/forum</a></p>
 								]]></label>

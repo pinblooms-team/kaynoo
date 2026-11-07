@@ -14,6 +14,8 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Checkout\Model\Cart as CustomerCart;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+use Magento\Framework\Filter\LocalizedToNormalized;
+
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -94,13 +96,15 @@ class Add extends \Magento\Checkout\Controller\Cart implements HttpPostActionInt
 		if (!$this->_formKeyValidator->validate($this->getRequest())) {
             return $this->resultRedirectFactory->create()->setPath('*/*/');
         }
-		
         $params = $this->getRequest()->getParams();
         try {
-            if (isset($params['qty'])) {
-                $filter = new \Zend_Filter_LocalizedToNormalized(
-                    ['locale' => $this->_objectManager->get('Magento\Framework\Locale\ResolverInterface')->getLocale()]
+           if (isset($params['qty'])) {
+                $filter = new LocalizedToNormalized(
+                    ['locale' => $this->_objectManager->get(
+                        \Magento\Framework\Locale\ResolverInterface::class
+                    )->getLocale()]
                 );
+               //$params['qty'] = $this->quantityProcessor->prepareQuantity($params['qty']);
                 $params['qty'] = $filter->filter($params['qty']);
             }
 

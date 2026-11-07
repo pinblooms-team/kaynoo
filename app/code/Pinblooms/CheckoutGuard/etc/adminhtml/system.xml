@@ -14,10 +14,10 @@
             <label>Checkout Guard</label>
             <tab>pinblooms</tab>
             <resource>Pinblooms_CheckoutGuard::config</resource>
-            <comment><![CDATA[GraphQL checkout protections for the PWA storefront. Logged-in customer checkout is not restricted by guest rules. Bot-pattern Payment Failed emails can be suppressed; real customer declines still send.]]></comment>
 
             <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
+                <comment><![CDATA[GraphQL checkout protections for the PWA storefront. Logged-in customer checkout is not restricted by guest rules. Bot-pattern Payment Failed emails can be suppressed; real customer declines still send.]]></comment>
                 <field id="enabled"
                        translate="label comment"
                        type="select"

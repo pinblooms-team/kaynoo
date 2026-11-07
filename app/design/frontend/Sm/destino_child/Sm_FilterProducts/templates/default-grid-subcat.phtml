@@ -76,28 +76,9 @@ if ($enableLadyLoading) {
 					<div class="sub-categories">
 						<?php if (!empty($catinfo)) { ?>
 							<ul>
-								<?php foreach ($catinfo as $cat) {
-									$i = 1;
-									$total = count($cat);
-									foreach ($cat as $c) {
-										if ($total > 1) {
-											if ($i == 1) { ?>
-												<li><a href="<?php echo $c['url'] ?>" title="<?php echo $c['name'] ?>"><?php echo $c['name'] ?></a>
-													<ul class="sub_cat">
-													<?php } ?>
-													<?php if ($i > 1) { ?>
-														<li><a href="<?php echo $c['url'] ?>" title="<?php echo $c['name'] ?>"><?php echo $c['name'] ?></a></li>
-													<?php }
-													if ($total == $i) { ?>
-													</ul>
-												</li>
-											<?php }
-												} else { ?>
-											<li><a href="<?php echo $c['url'] ?>" title="<?php echo $c['name'] ?>"><?php echo $c['name'] ?></a></li>
-										<?php } ?>
-								<?php $i++;
-									}
-								} ?>
+								<?php foreach ($catinfo as $cat) { ?>
+									<li><a href="<?php echo $cat['url'] ?>" title="<?php echo $cat['name'] ?>"><?php echo $cat['name'] ?></a></li>
+								<?php } ?>
 							</ul>
 						<?php } ?>
 					</div>

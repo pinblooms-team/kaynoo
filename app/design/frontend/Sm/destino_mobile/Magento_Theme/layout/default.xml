@@ -36,7 +36,6 @@
                 <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
 
 				<block class="Magento\Theme\Block\Html\Topmenu" name="nav.mobile" template="html/nav-mobile.phtml"/>
-                <block class="Magento\Theme\Block\Html\Topmenu" name="nav.mobile.new.block" template="Magento_Theme::html/nav-mobile.phtml"/>
 
 				<block class="Magento\Customer\Block\Form\Login" name="customer_form_login_sticky" template="form/login_mobile.phtml">
                     <container name="form.additional.info" as="form_additional_info"/>
@@ -47,7 +46,7 @@
         </referenceContainer>
 
         <!-- <move element="customer_account_navigation" destination="theme_header"/> -->
-        <!-- <move element="page.main.title" destination="theme_header"/> -->
+        <move element="page.main.title" destination="theme_header"/>
         <move element="catalog.topnav" destination="theme_header"/>
         <move element="top.search" destination="theme_header"/>
         <move element="minicart" destination="theme_header"/>

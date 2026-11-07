@@ -25,27 +25,9 @@ $fullscreen = $_config->getProductDetail('image_fullscreen');
 $thumbs_nav = $_config->getProductDetail('thumbs_navigation');
 $thumbs_margin = $_config->getProductDetail('thumbs_margin');
 $breakpoints = $_config->getProductDetail('breakpoints_width');
-
-// Get product prices
-$product = $block->getProduct();
-$regularPrice = $product->getPrice();
-$specialPrice = $product->getSpecialPrice();
-
-// Calculate discount percentage
-$discountLabel = '';
-if ($specialPrice && $specialPrice < $regularPrice) {
-    $discountAmount = $regularPrice - $specialPrice;
-    $discountPercentage = ($discountAmount / $regularPrice) * 100;
-    $discountLabel = '-' . round($discountPercentage) . '%';
-}
-
+ 
 ?>
 <div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
-    <?php if ($discountLabel): ?>
-        <div class="discount-label">
-            <span class="discount"><?= $discountLabel ?></span>
-        </div>
-    <?php endif; ?>
     <div data-role="loader" class="loading-mask">
         <div class="loader">
             <img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"

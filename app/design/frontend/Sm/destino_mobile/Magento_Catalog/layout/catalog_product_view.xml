@@ -17,7 +17,7 @@
 				</arguments>
 			</block>
 		</referenceContainer>
-
+		
 		<referenceContainer name="page.bottom.container">
 			<container name="div.container.detail" htmlTag="div" htmlClass="container">
 				<block class="Magento\Catalog\Block\Product\ProductList\Related" name="catalog.product.related.theme" template="Magento_Catalog::product/list/related-upsell.phtml" ifconfig="destino/product_detail/show_related">
@@ -43,13 +43,5 @@
 			</container>
         </referenceContainer>
 		<referenceBlock name="product_viewed_counter" remove="true" />
-
-		<!-- <referenceContainer name="product.info.price">
-	  		<block class="Magento\Catalog\Block\Product\View" name="product.info.media.blackfriday" template="Magento_Catalog::product/view/blackfriday_mobile.phtml" after="product.info.review" />
-        </referenceContainer> -->
-		<referenceContainer name="product.info.price">
-	  		<block class="Magento\Catalog\Block\Product\View" name="product.info.media.blackfriday" template="Magento_Catalog::product/view/livraison_express_mobile.phtml" after="product.info.review" />
-        </referenceContainer>
-		<referenceBlock name="product.info.social" remove="true" />
     </body>
 </page>

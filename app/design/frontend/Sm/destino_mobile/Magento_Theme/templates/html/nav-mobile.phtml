@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
@@ -16,30 +15,32 @@
  */
 ?>
 
-<?php
-$columnsLimit = $block->getColumnsLimit() ?: 0;
-$_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
+<?php 
+	$columnsLimit = $block->getColumnsLimit() ?: 0;
+	$_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
 ?>
 
 <div class="block-navigation-mobile">
 	<nav class="navigation-mobile">
 		<ul>
 			<?php /* @escapeNotVerified */ echo $_menu; ?>
-
+			
 			<?php
-			$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-			$conf = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/display_other_menu');
-			$titleNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_title');
-			$hrefNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_link');
-			if ($conf) {
+				$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+				$conf = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/display_other_menu');
+				$titleNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_title');
+				$hrefNav = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenu2/other_menu/other_menu_link');
+				if($conf){
 			?>
-				<li class="level0 level-top">
-					<a class="level-top" href="<?php echo $this->getUrl($hrefNav) ?>">
-						<span><?php echo $titleNav; ?></span>
-					</a>
-				</li>
-
+			<li class="level0 level-top">
+				<a class="level-top" href="<?php echo $this->getUrl($hrefNav) ?>">
+					<span><?php echo $titleNav; ?></span>
+				</a>
+			</li>
+			
 			<?php } ?>
 		</ul>
 	</nav>
 </div>
+
+

@@ -10,4 +10,16 @@
     <type name="Mirasvit\Search\Block\Result">
         <plugin name="BeforeGetTabUrl" type="Tecksky\Custom\Overwrite\Mirasvit\Search\Block\Result" sortOrder="1" />
     </type>
+    <type name="Magento\Review\Block\Product\ReviewRenderer">
+        <plugin name="tecksky_custom_review_template_type" type="Tecksky\Custom\Plugin\Review\ReviewRendererPlugin"/>
+    </type>
+    <type name="Yireo\NextGenImages\Util\HtmlReplacer">
+        <plugin name="tecksky_custom_nextgen_html_replacer" type="Tecksky\Custom\Plugin\Yireo\HtmlReplacerPlugin"/>
+    </type>
+    <type name="Magefan\Blog\Model\Post">
+        <plugin name="tecksky_custom_blog_short_content" type="Tecksky\Custom\Plugin\Blog\ShortContentPlugin"/>
+    </type>
+    <type name="Magento\Framework\App\View\Deployment\Version">
+        <plugin name="tecksky_custom_trim_static_version" type="Tecksky\Custom\Plugin\View\DeploymentVersionPlugin"/>
+    </type>
 </config>

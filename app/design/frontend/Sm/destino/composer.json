@@ -2,12 +2,12 @@
   "name": "sm/theme-frontend-destino",
   "description": "N/A",
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0",
-    "magento/theme-frontend-blank": "100.0.*",
-    "magento/framework": "100.0.*"
+    "php": "~8.3.0||~8.4.0",
+    "magento/theme-frontend-blank": "100.4.*",
+    "magento/framework": "103.0.*"
   },
   "type": "magento2-theme",
-  "version": "100.0.3",
+  "version": "5.8.0",
   "license": [
     "OSL-3.0",
     "AFL-3.0"

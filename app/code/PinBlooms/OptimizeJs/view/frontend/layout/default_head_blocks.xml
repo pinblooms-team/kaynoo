@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="head.additional">
-            <block class="Magento\Framework\View\Element\Template" name="custom_inline_js" template="PinBlooms_OptimizeJs::custom_script.phtml" />
-        </referenceContainer>
+        <!-- Loader moved to before.body.end in default.xml so Magento 2.4.9 actually outputs it. -->
     </body>
 </page>

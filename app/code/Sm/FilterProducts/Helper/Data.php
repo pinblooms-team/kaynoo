@@ -326,7 +326,7 @@ class Data extends AbstractHelper
 		];
 
 		$images_path = [];
-		$priority = preg_split('/[\s|,|;]/', $_config[$prefix . '_order'], -1, PREG_SPLIT_NO_EMPTY);
+		$priority = preg_split('/[\s|,|;]/', (string)($_config[$prefix . '_order'] ?? ''), -1, PREG_SPLIT_NO_EMPTY);
 		if (count($priority) > 0) {
 			$priority = array_map('strtolower', $priority);
 			$mark = [];
@@ -488,7 +488,7 @@ class Data extends AbstractHelper
 		);
 
 		$images_path = array();
-		$priority = preg_split('/[\s|,|;]/', $_config[$prefix . '_order'], -1, PREG_SPLIT_NO_EMPTY);
+		$priority = preg_split('/[\s|,|;]/', (string)($_config[$prefix . '_order'] ?? ''), -1, PREG_SPLIT_NO_EMPTY);
 		$mark = '';
 		if (count($priority) > 0) {
 			$priority = array_map('strtolower', $priority);
